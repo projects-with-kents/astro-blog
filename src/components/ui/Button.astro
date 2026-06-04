@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'default' | 'outline' | 'ghost';
+  variant?: 'default' | 'outline' | 'ghost' | 'hero' | 'secondary';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   class?: string;
@@ -18,12 +18,19 @@ const {
 } = Astro.props;
 
 const base =
-  'inline-flex items-center justify-center gap-2 font-medium rounded-full border transition-all duration-200 cursor-pointer';
+  'inline-flex items-center justify-center gap-2.5 font-medium rounded-full border transition-all duration-200 cursor-pointer';
 
 const variants: Record<string, string> = {
-  default: 'bg-primary text-primary-foreground border-primary hover:opacity-90',
-  outline: 'bg-transparent border-current hover:bg-white/10',
-  ghost:   'border-transparent bg-transparent hover:bg-muted text-foreground',
+  /** Filled primary brown — default CTA */
+  default:   'bg-[var(--color-primary)] text-[var(--color-primary-foreground)] border-[var(--color-primary)] hover:opacity-90',
+  /** Outlined, inherits color from parent — good on light bg */
+  outline:   'bg-transparent border-current hover:bg-black/5',
+  /** No border, no bg — subtle action on light bg */
+  ghost:     'border-transparent bg-transparent hover:bg-[var(--color-muted)] text-[var(--color-foreground)]',
+  /** Cream/secondary fill — warm accent */
+  secondary: 'bg-[var(--color-secondary)] text-[var(--color-secondary-foreground)] border-[var(--color-secondary)] hover:opacity-90',
+  /** White outline on dark/photo backgrounds (hero sections) */
+  hero:      'bg-transparent border-white/80 text-white hover:bg-white hover:text-[var(--color-foreground)]',
 };
 
 const sizes: Record<string, string> = {

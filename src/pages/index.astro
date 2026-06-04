@@ -1,23 +1,15 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero   from '../components/sections/Hero.astro';
-import homeData from '../data/home.json';
+import Layout      from '../layouts/Layout.astro';
+import PageBuilder from '../components/PageBuilder.astro';
+import homeData    from '../data/home.json';
 
-const { hero } = homeData;
+// Hero is always the first block — drive the navbar dark-mode from data
+const heroIsDark = homeData.sections[0]?.type === 'hero';
 ---
 
 <Layout
   title="VetCare — Compassionate Care for Your Pets"
-  heroIsDark={true}
+  heroIsDark={heroIsDark}
 >
-  <Hero
-    image={hero.image}
-    imageAlt={hero.imageAlt}
-    badge={hero.badge}
-    headingPrefix={hero.headingPrefix}
-    headingItalic={hero.headingItalic}
-    headingSuffix={hero.headingSuffix}
-    subheading={hero.subheading}
-    cta={hero.cta}
-  />
+  <PageBuilder sections={homeData.sections as any} />
 </Layout>

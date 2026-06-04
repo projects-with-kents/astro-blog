@@ -1,6 +1,9 @@
 # Pages CMS configuration
 # Docs: https://pagescms.org/docs/configuration
 # Edit content at: https://app.pagescms.org (connect your GitHub repo)
+#
+# NOTE: pagescms uses type: object + list: true for arrays of objects.
+# type: list is for arrays of primitives only.
 
 media:
   input: public/assets
@@ -17,7 +20,11 @@ content:
       - { name: enabled, label: "Show bar", type: boolean }
       - name: items
         label: Items
-        type: list
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{text}"
         fields:
           - { name: text,  label: Text,  type: string }
           - { name: emoji, label: Emoji, type: string }
@@ -36,13 +43,15 @@ content:
     fields:
       - name: linksLeft
         label: Left Links
-        type: list
+        type: object
+        list: true
         fields:
           - { name: label, label: Label, type: string }
           - { name: href,  label: URL,   type: string }
       - name: linksRight
         label: Right Links
-        type: list
+        type: object
+        list: true
         fields:
           - { name: label, label: Label, type: string }
           - { name: href,  label: URL,   type: string }
@@ -59,20 +68,49 @@ content:
     path: src/data/home.json
     type: file
     fields:
-      - name: hero
-        label: Hero Section
-        type: object
-        fields:
-          - { name: image,          label: Background Image, type: image }
-          - { name: imageAlt,       label: Image Alt Text,   type: string }
-          - { name: badge,          label: Badge Text,       type: string }
-          - { name: headingPrefix,  label: Heading (plain),  type: string }
-          - { name: headingItalic,  label: Heading (italic part), type: string }
-          - { name: headingSuffix,  label: Heading (end),    type: string }
-          - { name: subheading,     label: Subheading,       type: text }
-          - name: cta
-            label: CTA Button
-            type: object
+      - name: sections
+        label: Page Sections
+        type: block
+        list: true
+        blockKey: type
+        blocks:
+
+          # ── Hero block ───────────────────────────────────
+          - name: hero
+            label: Hero
             fields:
-              - { name: label, label: Label, type: string }
-              - { name: href,  label: URL,   type: string }
+              - { name: image,      label: Background Image, type: image }
+              - { name: imageAlt,   label: Image Alt Text,   type: string }
+              - { name: badge,      label: Badge Text,       type: string }
+              - name: heading
+                label: "Heading (use *asterisks* for italic)"
+                type: string
+              - { name: subheading, label: Subheading,       type: text }
+              - name: cta
+                label: CTA Button
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string }
+                  - { name: href,  label: URL,   type: string }
+
+          # ── Services block ───────────────────────────────
+          - name: services
+            label: Services Grid
+            fields:
+              - name: heading
+                label: "Heading (use *asterisks* for italic)"
+                type: string
+              - { name: subheading, label: Subheading, type: text }
+              - name: items
+                label: Service Cards
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
+                fields:
+                  - { name: icon,        label: "Icon key",       type: string }
+                  - { name: title,       label: Title,            type: string }
+                  - { name: description, label: Description,      type: text }
+                  - { name: href,        label: "Learn more URL", type: string }
+

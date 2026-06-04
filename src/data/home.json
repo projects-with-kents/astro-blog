@@ -1,15 +1,59 @@
 {
-  "hero": {
-    "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
-    "imageAlt": "French bulldog at the veterinary clinic",
-    "badge": "Trusted by 5,000+ Pet Owners",
-    "headingPrefix": "Step into the ",
-    "headingItalic": "world of furry",
-    "headingSuffix": " Friends!",
-    "subheading": "Whether you're looking for a veterinarian, groomer, or a compassionate care team — we're crafted to cater to your unique needs and aspirations.",
-    "cta": {
-      "label": "Get Started",
-      "href": "/services"
+  "sections": [
+    {
+      "type": "hero",
+      "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+      "imageAlt": "French bulldog at the veterinary clinic",
+      "badge": "🐾 Trusted by 5,000+ Pet Owners",
+      "heading": "Step into the *world of furry* Friends!",
+      "subheading": "Whether you're looking for a veterinarian, groomer, or a compassionate care team — we're crafted to cater to your unique needs and aspirations.",
+      "cta": {
+        "label": "Get Started",
+        "href": "/services"
+      }
+    },
+    {
+      "type": "services",
+      "heading": "Health and wellness *from nose to tail*",
+      "subheading": "Comprehensive care designed for every stage of your pet's life — because they deserve nothing but the best.",
+      "items": [
+        {
+          "icon": "transport",
+          "title": "Transport",
+          "description": "Convenient transportation for your pet to grooming, vet visits, and more.",
+          "href": "/services/transport"
+        },
+        {
+          "icon": "wellness",
+          "title": "Wellness",
+          "description": "Routine health check-ups, vaccinations, and emergency care to keep your pet in top shape.",
+          "href": "/services/wellness"
+        },
+        {
+          "icon": "walking",
+          "title": "Walking",
+          "description": "Regular walks and exercise to keep your pet active and healthy.",
+          "href": "/services/walking"
+        },
+        {
+          "icon": "training",
+          "title": "Training",
+          "description": "Obedience and behavioural training to ensure your pet is well-behaved and happy.",
+          "href": "/services/training"
+        },
+        {
+          "icon": "boarding",
+          "title": "Boarding",
+          "description": "Safe and comfortable overnight care for your pets while you're away.",
+          "href": "/services/boarding"
+        },
+        {
+          "icon": "grooming",
+          "title": "Pet Grooming",
+          "description": "Keep your pet clean with professional grooming services, including baths, trims, and nail care.",
+          "href": "/services/grooming"
+        }
+      ]
     }
-  }
+  ]
 }

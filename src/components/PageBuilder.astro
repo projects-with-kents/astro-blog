@@ -1,0 +1,78 @@
+---
+/**
+ * PageBuilder — renders an ordered list of content blocks.
+ *
+ * Each block in the `sections` array must have a `type` key that matches
+ * one of the registered block components below.
+ *
+ * Adding a new block type:
+ *  1. Create the section component in src/components/sections/
+ *  2. Import it here
+ *  3. Add a case to the switch in the template
+ *  4. Add the block definition to .pages.yml under content[home].fields[sections].blocks
+ */
+import Hero     from './sections/Hero.astro';
+import Services from './sections/Services.astro';
+
+type HeroBlock = {
+  type: 'hero';
+  image: string;
+  imageAlt: string;
+  badge?: string;
+  /** Use *asterisks* for italic parts */
+  heading: string;
+  subheading: string;
+  cta: { label: string; href: string };
+};
+
+type ServiceItem = {
+  icon: string;
+  title: string;
+  description: string;
+  href: string;
+};
+
+type ServicesBlock = {
+  type: 'services';
+  heading: string;
+  subheading: string;
+  items: ServiceItem[];
+};
+
+type Block = HeroBlock | ServicesBlock;
+
+interface Props {
+  sections: Block[];
+}
+
+const { sections } = Astro.props;
+---
+
+{sections.map((block) => {
+  switch (block.type) {
+    case 'hero':
+      return (
+        <Hero
+          image={block.image}
+          imageAlt={block.imageAlt}
+          badge={block.badge}
+          heading={block.heading}
+          subheading={block.subheading}
+          cta={block.cta}
+        />
+      );
+
+    case 'services':
+      return (
+        <Services
+          heading={block.heading}
+          subheading={block.subheading}
+          items={block.items}
+        />
+      );
+
+    default:
+      // Unknown block type — skip silently in production
+      return null;
+  }
+})}

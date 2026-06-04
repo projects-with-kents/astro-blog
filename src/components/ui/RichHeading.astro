@@ -1,0 +1,44 @@
+---
+/**
+ * RichHeading — renders a heading with mixed regular/italic text.
+ *
+ * Syntax: wrap italic parts in *asterisks*
+ *   "Step into the *world of furry* Friends!"
+ *   →  Step into the <em>world of furry</em> Friends!
+ *
+ * Props:
+ *   text   — the heading string, supports *italic* markers
+ *   as     — HTML tag: h1 | h2 | h3 | h4  (default: h2)
+ *   class  — extra Tailwind classes
+ */
+
+interface Segment {
+  text:   string;
+  italic: boolean;
+}
+
+interface Props {
+  text:  string;
+  as?:   'h1' | 'h2' | 'h3' | 'h4';
+  class?: string;
+}
+
+const { text, as: Tag = 'h2', class: className = '' } = Astro.props;
+
+/** Parse "plain *italic* plain" into typed segments */
+function parseSegments(raw: string): Segment[] {
+  const parts = raw.split(/\*([^*]+)\*/);
+  // split by *…* gives: [plain, italic, plain, italic, …]
+  return parts.map((part, i) => ({ text: part, italic: i % 2 === 1 }));
+}
+
+const segments = parseSegments(text);
+---
+
+<Tag class={className}>
+  {segments.map((seg) =>
+    seg.italic
+      ? <em class="italic font-[inherit]">{seg.text}</em>
+      : seg.text
+  )}
+</Tag>
