@@ -14,7 +14,7 @@ const { icon, title, description, href } = Astro.props;
 ---
 
 <a
-  href={href}
+  href={href || '#'}
   class="group flex flex-col gap-5 p-7 bg-white rounded-2xl border border-[var(--color-border)] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-250"
 >
   <!-- Icon bubble -->
@@ -34,11 +34,13 @@ const { icon, title, description, href } = Astro.props;
     </p>
   </div>
 
-  <!-- Learn more -->
-  <span class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors">
-    Learn more
-    <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M5 12h14M12 5l7 7-7 7"/>
-    </svg>
-  </span>
+  {href && (
+    <!-- Learn more -->
+    <span class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] transition-colors">
+      Learn more
+      <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </span>
+  )}
 </a>
