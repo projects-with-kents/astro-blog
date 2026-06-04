@@ -1,0 +1,30 @@
+---
+import RichHeading from '../ui/RichHeading.astro';
+
+interface Props {
+  heading:     string;
+  subheading?: string;
+}
+
+const { heading, subheading } = Astro.props;
+---
+
+<section
+  class="bg-[var(--color-background)]"
+  style="padding-top: calc(var(--announcement-height, 40px) + 96px);"
+>
+  <div class="container mx-auto px-6 lg:px-10 pb-12">
+    <div class="max-w-2xl">
+      <RichHeading
+        text={heading}
+        as="h1"
+        class="font-serif text-4xl lg:text-5xl xl:text-[3.25rem] font-bold leading-[1.1] text-[var(--color-foreground)] mb-5"
+      />
+      {subheading && (
+        <p class="text-[var(--color-muted-foreground)] text-base lg:text-lg leading-relaxed max-w-xl">
+          {subheading}
+        </p>
+      )}
+    </div>
+  </div>
+</section>

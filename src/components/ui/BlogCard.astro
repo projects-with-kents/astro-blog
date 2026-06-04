@@ -1,0 +1,54 @@
+---
+interface Props {
+  title:     string;
+  excerpt:   string;
+  category:  string;
+  image?:    string;
+  imageAlt?: string;
+  href:      string;
+}
+
+const { title, excerpt, category, image, imageAlt, href } = Astro.props;
+
+type ColorSet = { dot: string; pill: string };
+
+const categoryColors: Record<string, ColorSet> = {
+  'News & Updates':     { dot: 'bg-amber-400', pill: 'bg-amber-50 text-amber-800'  },
+  'Resources & Guides': { dot: 'bg-rose-400',  pill: 'bg-rose-50 text-rose-800'    },
+  'Pet Care Tips':      { dot: 'bg-sky-400',   pill: 'bg-sky-50 text-sky-800'      },
+};
+
+const colors: ColorSet = categoryColors[category] ?? {
+  dot:  'bg-[var(--color-accent)]',
+  pill: 'bg-[var(--color-muted)] text-[var(--color-muted-foreground)]',
+};
+---
+
+<a
+  href={href}
+  class="group block rounded-2xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-card)] hover:shadow-lg transition-all duration-300"
+  data-card-category={category}
+>
+  {image && (
+    <div class="aspect-[4/3] overflow-hidden">
+      <img
+        src={image}
+        alt={imageAlt ?? title}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
+      />
+    </div>
+  )}
+  <div class="p-5 flex flex-col gap-3">
+    <span class={`self-start inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${colors.pill}`}>
+      <span class={`w-1.5 h-1.5 rounded-full shrink-0 ${colors.dot}`}></span>
+      {category}
+    </span>
+    <h3 class="font-serif text-lg font-semibold leading-snug group-hover:text-[var(--color-primary)] transition-colors line-clamp-2">
+      {title}
+    </h3>
+    <p class="text-sm text-[var(--color-muted-foreground)] leading-relaxed line-clamp-3">
+      {excerpt}
+    </p>
+  </div>
+</a>

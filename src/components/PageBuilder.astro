@@ -15,8 +15,9 @@ import Hero         from './sections/Hero.astro';
 import Services     from './sections/Services.astro';
 import Feature      from './sections/Feature.astro';
 import Testimonials from './sections/Testimonials.astro';
-import CTA         from './sections/CTA.astro';
-import FAQ         from './sections/FAQ.astro';
+import CTA          from './sections/CTA.astro';
+import FAQ          from './sections/FAQ.astro';
+import InsiderHero  from './sections/InsiderHero.astro';
 
 type HeroBlock = {
   type: 'hero';
@@ -98,7 +99,13 @@ type FAQBlock = {
   cta?: { label: string; href: string };
 };
 
-type Block = HeroBlock | ServicesBlock | FeatureBlock | TestimonialsBlock | CTABlock | FAQBlock;
+type InsiderHeroBlock = {
+  type: 'insider-hero';
+  heading: string;
+  subheading?: string;
+};
+
+type Block = HeroBlock | ServicesBlock | FeatureBlock | TestimonialsBlock | CTABlock | FAQBlock | InsiderHeroBlock;
 
 interface Props {
   sections: Block[];
@@ -171,6 +178,14 @@ const { sections } = Astro.props;
           body={block.body}
           faqs={block.faqs}
           cta={block.cta}
+        />
+      );
+
+    case 'insider-hero':
+      return (
+        <InsiderHero
+          heading={block.heading}
+          subheading={block.subheading}
         />
       );
 

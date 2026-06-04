@@ -1,0 +1,160 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry }  from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props:  { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFormatted = post.data.date.toLocaleDateString('en-US', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+
+type ColorSet = { dot: string; pill: string };
+
+const categoryColors: Record<string, ColorSet> = {
+  'News & Updates':     { dot: 'bg-amber-400', pill: 'bg-amber-50 text-amber-800' },
+  'Resources & Guides': { dot: 'bg-rose-400',  pill: 'bg-rose-50 text-rose-800'   },
+  'Pet Care Tips':      { dot: 'bg-sky-400',   pill: 'bg-sky-50 text-sky-800'     },
+};
+
+const colors: ColorSet = categoryColors[post.data.category] ?? {
+  dot:  'bg-[var(--color-accent)]',
+  pill: 'bg-[var(--color-muted)] text-[var(--color-muted-foreground)]',
+};
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.excerpt}
+  heroIsDark={false}
+>
+  <article>
+
+    <!-- ── Article header ──────────────────────────────── -->
+    <header
+      class="container mx-auto px-6 lg:px-10 max-w-3xl pb-10"
+      style="padding-top: calc(var(--announcement-height, 40px) + 96px);"
+    >
+      <a
+        href="/insider"
+        class="inline-flex items-center gap-2 text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] transition-colors mb-8 group"
+      >
+        <svg class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clip-rule="evenodd"/>
+        </svg>
+        Back to Insider
+      </a>
+
+      <div class="flex items-center gap-4 mb-6 flex-wrap">
+        <span class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${colors.pill}`}>
+          <span class={`w-1.5 h-1.5 rounded-full ${colors.dot}`}></span>
+          {post.data.category}
+        </span>
+        <time
+          class="text-sm text-[var(--color-muted-foreground)]"
+          datetime={post.data.date.toISOString()}
+        >
+          {dateFormatted}
+        </time>
+      </div>
+
+      <h1 class="font-serif text-4xl lg:text-5xl font-bold leading-tight mb-6">
+        {post.data.title}
+      </h1>
+      <p class="text-lg text-[var(--color-muted-foreground)] leading-relaxed">
+        {post.data.excerpt}
+      </p>
+    </header>
+
+    <!-- ── Cover image ─────────────────────────────────── -->
+    {post.data.image && (
+      <div class="container mx-auto px-6 lg:px-10 mb-12 max-w-4xl">
+        <div class="rounded-2xl overflow-hidden aspect-[2/1]">
+          <img
+            src={post.data.image}
+            alt={post.data.imageAlt ?? post.data.title}
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+      </div>
+    )}
+
+    <!-- ── Markdown content ────────────────────────────── -->
+    <div class="container mx-auto px-6 lg:px-10 pb-24 max-w-3xl">
+      <div class="prose-blog">
+        <Content />
+      </div>
+    </div>
+
+  </article>
+</Layout>
+
+<style is:global>
+  .prose-blog h2 {
+    font-family: var(--font-serif);
+    font-size: 1.625rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.25;
+    color: var(--color-foreground);
+  }
+  .prose-blog h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-foreground);
+  }
+  .prose-blog p {
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+    color: var(--color-foreground);
+  }
+  .prose-blog ul,
+  .prose-blog ol {
+    margin: 0.75rem 0 1.5rem 1.5rem;
+    line-height: 1.75;
+  }
+  .prose-blog ul  { list-style-type: disc; }
+  .prose-blog ol  { list-style-type: decimal; }
+  .prose-blog li  { margin-bottom: 0.375rem; color: var(--color-foreground); }
+  .prose-blog strong { font-weight: 600; color: var(--color-foreground); }
+  .prose-blog blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+    color: var(--color-muted-foreground);
+    font-style: italic;
+  }
+  .prose-blog a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose-blog code {
+    font-size: 0.875em;
+    background: var(--color-muted);
+    padding: 0.125em 0.375em;
+    border-radius: 0.25rem;
+  }
+  .prose-blog hr {
+    border-color: var(--color-border);
+    margin: 2rem 0;
+  }
+</style>
