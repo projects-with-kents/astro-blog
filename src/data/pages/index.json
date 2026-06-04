@@ -1,168 +1,168 @@
-﻿{
-    "id":  "index",
-    "slug":  "index",
-    "title":  "VetCare - Pet Grooming \u0026 Wellness",
-    "description":  "Professional pet care services",
-    "heroIsDark":  true,
-    "sections":  [
-                     {
-                         "type":  "hero",
-                         "image":  "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
-                         "imageAlt":  "French bulldog at the veterinary clinic",
-                         "badge":  "рџђѕ Trusted by 5,000+ Pet Owners",
-                         "heading":  "Step into the *world of furry* Friends!",
-                         "subheading":  "Whether you\u0027re looking for a veterinarian, groomer, or a compassionate care team вЂ” we\u0027re crafted to cater to your unique needs and aspirations.",
-                         "cta":  {
-                                     "label":  "Get Started",
-                                     "href":  "/services"
-                                 }
-                     },
-                     {
-                         "type":  "services",
-                         "heading":  "Health and wellness *from nose to tail*",
-                         "subheading":  "Comprehensive care designed for every stage of your pet\u0027s life вЂ” because they deserve nothing but the best.",
-                         "items":  [
-                                       {
-                                           "title":  "Transport",
-                                           "description":  "Convenient transportation for your pet to grooming, vet visits, and more.",
-                                           "href":  "/services/transport"
-                                       },
-                                       {
-                                           "title":  "Wellness",
-                                           "description":  "Routine health check-ups, vaccinations, and emergency care to keep your pet in top shape.",
-                                           "href":  "/services/wellness"
-                                       },
-                                       {
-                                           "title":  "Walking",
-                                           "description":  "Regular walks and exercise to keep your pet active and healthy.",
-                                           "href":  "/services/walking"
-                                       },
-                                       {
-                                           "title":  "Training",
-                                           "description":  "Obedience and behavioural training to ensure your pet is well-behaved and happy.",
-                                           "href":  "/services/training"
-                                       },
-                                       {
-                                           "title":  "Boarding",
-                                           "description":  "Safe and comfortable overnight care for your pets while you\u0027re away.",
-                                           "href":  "/services/boarding"
-                                       },
-                                       {
-                                           "title":  "Pet Grooming",
-                                           "description":  "Keep your pet clean with professional grooming services, including baths, trims, and nail care.",
-                                           "href":  "/services/grooming"
-                                       }
-                                   ]
-                     },
-                     {
-                         "type":  "feature",
-                         "layout":  "image-left",
-                         "image":  "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
-                         "imageAlt":  "Veterinary team caring for a cat",
-                         "heading":  "Well-being isn\u0027t just for *human beings*.",
-                         "body":  "There are many variations of passages available, but the majority have suffered alteration in some form by injected humour or randomized words.",
-                         "features":  [
-                                          {
-                                              "text":  "Expert Caretaker"
-                                          },
-                                          {
-                                              "text":  "Safe \u0026 Secure"
-                                          },
-                                          {
-                                              "text":  "Wellness \u0026 Resolution"
-                                          },
-                                          {
-                                              "text":  "Luxurious"
-                                          }
-                                      ],
-                         "ctaPrimary":  {
-                                            "label":  "More About Us",
-                                            "href":  "/about"
-                                        },
-                         "ctaSecondary":  {
-                                              "label":  "Our Services",
-                                              "href":  "/services"
-                                          }
-                     },
-                     {
-                         "type":  "testimonials",
-                         "heading":  "Why pet owners *trust us*",
-                         "subheading":  "Real stories from happy pets and their families.",
-                         "testimonials":  [
-                                              {
-                                                  "image":  "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
-                                                  "imageAlt":  "Sarah W. with her dog Bella",
-                                                  "rating":  5,
-                                                  "quote":  "An amazing service",
-                                                  "text":  "I couldn\u0027t be happier with the care my dog, Bella, receives at Groomy! The staff treats her like their own, and I can see how much she enjoys every visit. Knowing she\u0027s in such caring hands gives me complete peace of mind. Highly recommend to anyone looking for a place that truly loves pets!",
-                                                  "author":  "Sarah W."
-                                              },
-                                              {
-                                                  "image":  "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
-                                                  "imageAlt":  "Mark D. with his cat",
-                                                  "rating":  5,
-                                                  "quote":  "Exceptional care and attention",
-                                                  "text":  "Mark D. here вЂ” my cat Max was anxious about staying away from home, but the team at Groomy made him feel so comfortable. They provided updates and photos, which really helped ease my worries. The level of professionalism and genuine care is unmatched. Five stars all the way!",
-                                                  "author":  "Mark D."
-                                              },
-                                              {
-                                                  "image":  "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
-                                                  "imageAlt":  "Jennifer K. with her pets",
-                                                  "rating":  5,
-                                                  "quote":  "Best pet care service in town",
-                                                  "text":  "Jennifer K. speaking вЂ” I\u0027ve tried several pet care services over the years, but Groomy stands out from the crowd. The team is knowledgeable, responsive, and genuinely passionate about animal welfare. My pets are always happy and well-cared for. Couldn\u0027t ask for better!",
-                                                  "author":  "Jennifer K."
-                                              }
-                                          ]
-                     },
-                     {
-                         "type":  "cta",
-                         "heading":  "Let\u0027s Give Your Pet *the Care* They Deserve",
-                         "body":  "Don\u0027t wait to give your furry friend the best care possible. Contact us now to schedule a visit вЂ“ we can\u0027t wait to meet you and your pet!",
-                         "ctaPrimary":  {
-                                            "label":  "Reserve Now",
-                                            "href":  "/contact"
-                                        },
-                         "ctaSecondary":  {
-                                              "label":  "Our Services",
-                                              "href":  "/services"
-                                          },
-                         "backgroundColor":  "#5C3D1E"
-                     },
-                     {
-                         "type":  "faq",
-                         "heading":  "Got Questions? We\u0027ve Got *Answers*!",
-                         "body":  "From our services and facilities to booking and safety measures, we\u0027ve covered everything you need to know. If you don\u0027t see your question here, feel free to reach out вЂ“ we\u0027re always happy to help!",
-                         "faqs":  [
-                                      {
-                                          "question":  "What types of pets do you care for?",
-                                          "answer":  "We care for a wide variety of pets including dogs, cats, rabbits, guinea pigs, hamsters, birds, and more. Contact us to discuss your specific pet\u0027s needs!"
-                                      },
-                                      {
-                                          "question":  "How do I book an appointment?",
-                                          "answer":  "You can book an appointment through our website, by phone, or by visiting us in person. We offer flexible scheduling to work around your busy life."
-                                      },
-                                      {
-                                          "question":  "What should I bring for my pet\u0027s visit?",
-                                          "answer":  "Please bring any relevant medical records, vaccination certificates, and information about your pet\u0027s current diet and medications. We\u0027ll take care of the rest!"
-                                      },
-                                      {
-                                          "question":  "Do you offer emergency care?",
-                                          "answer":  "Yes, we offer emergency care services. Please call us immediately if your pet is experiencing an emergency."
-                                      },
-                                      {
-                                          "question":  "How can I ensure my pet is comfortable during their stay?",
-                                          "answer":  "We provide comfortable accommodations, regular exercise, and plenty of attention. You can also bring your pet\u0027s favorite toys or bedding for comfort."
-                                      },
-                                      {
-                                          "question":  "Are your staff members trained in pet first aid?",
-                                          "answer":  "Absolutely! All our staff members are certified in pet first aid and CPR, ensuring your pet receives the best possible care."
-                                      }
-                                  ],
-                         "cta":  {
-                                     "label":  "Contact us",
-                                     "href":  "/contact"
-                                 }
-                     }
-                 ]
+{
+  "id": "index",
+  "slug": "index",
+  "title": "VetCare - Pet Grooming & Wellness",
+  "description": "Professional pet care services",
+  "heroIsDark": true,
+  "sections": [
+    {
+      "type": "hero",
+      "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+      "imageAlt": "French bulldog at the veterinary clinic",
+      "badge": "рџђѕ Trusted by 5,000+ Pet Owners",
+      "heading": "Step into the *world of furry* Friends!",
+      "subheading": "Whether you're looking for a veterinarian, groomer, or a compassionate care team вЂ” we're crafted to cater to your unique needs and aspirations.",
+      "cta": {
+        "label": "Get Started",
+        "href": "/services"
+      }
+    },
+    {
+      "type": "services",
+      "heading": "Health and wellness *from nose to tail*",
+      "subheading": "Comprehensive care designed for every stage of your pet's life вЂ” because they deserve nothing but the best.",
+      "items": [
+        {
+          "title": "Transport",
+          "description": "Convenient transportation for your pet to grooming, vet visits, and more.",
+          "href": "/services/transport"
+        },
+        {
+          "title": "Wellness",
+          "description": "Routine health check-ups, vaccinations, and emergency care to keep your pet in top shape.",
+          "href": "/services/wellness"
+        },
+        {
+          "title": "Walking",
+          "description": "Regular walks and exercise to keep your pet active and healthy.",
+          "href": "/services/walking"
+        },
+        {
+          "title": "Training",
+          "description": "Obedience and behavioural training to ensure your pet is well-behaved and happy.",
+          "href": "/services/training"
+        },
+        {
+          "title": "Boarding",
+          "description": "Safe and comfortable overnight care for your pets while you're away.",
+          "href": "/services/boarding"
+        },
+        {
+          "title": "Pet Grooming",
+          "description": "Keep your pet clean with professional grooming services, including baths, trims, and nail care.",
+          "href": "/services/grooming"
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "layout": "image-left",
+      "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+      "imageAlt": "Veterinary team caring for a cat",
+      "heading": "Well-being isn't just for *human beings*.",
+      "body": "There are many variations of passages available, but the majority have suffered alteration in some form by injected humour or randomized words.",
+      "features": [
+        {
+          "text": "Expert Caretaker"
+        },
+        {
+          "text": "Safe & Secure"
+        },
+        {
+          "text": "Wellness & Resolution"
+        },
+        {
+          "text": "Luxurious"
+        }
+      ],
+      "ctaPrimary": {
+        "label": "More About Us",
+        "href": "/about"
+      },
+      "ctaSecondary": {
+        "label": "Our Services",
+        "href": "/services"
+      }
+    },
+    {
+      "type": "testimonials",
+      "heading": "Why pet owners *trust us*",
+      "subheading": "Real stories from happy pets and their families.",
+      "testimonials": [
+        {
+          "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+          "imageAlt": "Sarah W. with her dog Bella",
+          "rating": 5,
+          "quote": "An amazing service",
+          "text": "I couldn't be happier with the care my dog, Bella, receives at Groomy! The staff treats her like their own, and I can see how much she enjoys every visit. Knowing she's in such caring hands gives me complete peace of mind. Highly recommend to anyone looking for a place that truly loves pets!",
+          "author": "Sarah W."
+        },
+        {
+          "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+          "imageAlt": "Mark D. with his cat",
+          "rating": 5,
+          "quote": "Exceptional care and attention",
+          "text": "Mark D. here вЂ” my cat Max was anxious about staying away from home, but the team at Groomy made him feel so comfortable. They provided updates and photos, which really helped ease my worries. The level of professionalism and genuine care is unmatched. Five stars all the way!",
+          "author": "Mark D."
+        },
+        {
+          "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+          "imageAlt": "Jennifer K. with her pets",
+          "rating": 5,
+          "quote": "Best pet care service in town",
+          "text": "Jennifer K. speaking вЂ” I've tried several pet care services over the years, but Groomy stands out from the crowd. The team is knowledgeable, responsive, and genuinely passionate about animal welfare. My pets are always happy and well-cared for. Couldn't ask for better!",
+          "author": "Jennifer K."
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "heading": "Let's Give Your Pet *the Care* They Deserve",
+      "body": "Don't wait to give your furry friend the best care possible. Contact us now to schedule a visit вЂ“ we can't wait to meet you and your pet!",
+      "ctaPrimary": {
+        "label": "Reserve Now",
+        "href": "/contact"
+      },
+      "ctaSecondary": {
+        "label": "Our Services",
+        "href": "/services"
+      },
+      "backgroundColor": "#5C3D1E"
+    },
+    {
+      "type": "faq",
+      "heading": "Got Questions? We've Got *Answers*!",
+      "body": "From our services and facilities to booking and safety measures, we've covered everything you need to know. If you don't see your question here, feel free to reach out вЂ“ we're always happy to help!",
+      "faqs": [
+        {
+          "question": "What types of pets do you care for?",
+          "answer": "We care for a wide variety of pets including dogs, cats, rabbits, guinea pigs, hamsters, birds, and more. Contact us to discuss your specific pet's needs!"
+        },
+        {
+          "question": "How do I book an appointment?",
+          "answer": "You can book an appointment through our website, by phone, or by visiting us in person. We offer flexible scheduling to work around your busy life."
+        },
+        {
+          "question": "What should I bring for my pet's visit?",
+          "answer": "Please bring any relevant medical records, vaccination certificates, and information about your pet's current diet and medications. We'll take care of the rest!"
+        },
+        {
+          "question": "Do you offer emergency care?",
+          "answer": "Yes, we offer emergency care services. Please call us immediately if your pet is experiencing an emergency."
+        },
+        {
+          "question": "How can I ensure my pet is comfortable during their stay?",
+          "answer": "We provide comfortable accommodations, regular exercise, and plenty of attention. You can also bring your pet's favorite toys or bedding for comfort."
+        },
+        {
+          "question": "Are your staff members trained in pet first aid?",
+          "answer": "Absolutely! All our staff members are certified in pet first aid and CPR, ensuring your pet receives the best possible care."
+        }
+      ],
+      "cta": {
+        "label": "Contact us",
+        "href": "/contact"
+      }
+    }
+  ]
 }

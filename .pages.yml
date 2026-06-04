@@ -247,6 +247,7 @@ content:
         label: Page Sections
         type: block
         list: true
+        blockKey: type
         blocks:
           # ── Hero block ───────────────────────────────────
           - name: hero

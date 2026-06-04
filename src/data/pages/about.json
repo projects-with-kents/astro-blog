@@ -1,53 +1,53 @@
-﻿{
-    "id":  "about",
-    "slug":  "about",
-    "title":  "About VetCare - Our Story \u0026 Mission",
-    "description":  "Learn about our passionate team and commitment to pet wellness",
-    "heroIsDark":  false,
-    "sections":  [
-                     {
-                         "type":  "hero",
-                         "image":  "/assets/hero-banner.jpg",
-                         "imageAlt":  "VetCare Team",
-                         "badge":  "вќ¤пёЏ",
-                         "heading":  "About *VetCare*",
-                         "subheading":  "Founded on a passion for pet wellness and care excellence",
-                         "cta":  {
-                                     "label":  "Join Our Team",
-                                     "href":  "/contact"
-                                 }
-                     },
-                     {
-                         "type":  "feature",
-                         "layout":  "image-left",
-                         "image":  "/assets/hero-banner.jpg",
-                         "imageAlt":  "Our mission",
-                         "heading":  "Our *Mission*",
-                         "body":  "We believe every pet deserves exceptional care. Our team is dedicated to providing the highest quality services in a safe, welcoming environment.",
-                         "features":  [
-                                          {
-                                              "text":  "Expert, certified staff"
-                                          },
-                                          {
-                                              "text":  "State-of-the-art facilities"
-                                          },
-                                          {
-                                              "text":  "Pet-first philosophy"
-                                          },
-                                          {
-                                              "text":  "Emergency care available"
-                                          }
-                                      ]
-                     },
-                     {
-                         "type":  "cta",
-                         "heading":  "Ready to *Experience* VetCare?",
-                         "body":  "Schedule a tour of our facilities or book your pet\u0027s first appointment today.",
-                         "ctaPrimary":  {
-                                            "label":  "Book a Tour",
-                                            "href":  "/contact"
-                                        },
-                         "backgroundColor":  "#E7CAA1"
-                     }
-                 ]
+{
+  "id": "about",
+  "slug": "about",
+  "title": "About VetCare - Our Story & Mission",
+  "description": "Learn about our passionate team and commitment to pet wellness",
+  "heroIsDark": false,
+  "sections": [
+    {
+      "type": "hero",
+      "image": "/assets/hero-banner.jpg",
+      "imageAlt": "VetCare Team",
+      "badge": "вќ¤пёЏ",
+      "heading": "About *VetCare*",
+      "subheading": "Founded on a passion for pet wellness and care excellence",
+      "cta": {
+        "label": "Join Our Team",
+        "href": "/contact"
+      }
+    },
+    {
+      "type": "feature",
+      "layout": "image-left",
+      "image": "/assets/hero-banner.jpg",
+      "imageAlt": "Our mission",
+      "heading": "Our *Mission*",
+      "body": "We believe every pet deserves exceptional care. Our team is dedicated to providing the highest quality services in a safe, welcoming environment.",
+      "features": [
+        {
+          "text": "Expert, certified staff"
+        },
+        {
+          "text": "State-of-the-art facilities"
+        },
+        {
+          "text": "Pet-first philosophy"
+        },
+        {
+          "text": "Emergency care available"
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "heading": "Ready to *Experience* VetCare?",
+      "body": "Schedule a tour of our facilities or book your pet's first appointment today.",
+      "ctaPrimary": {
+        "label": "Book a Tour",
+        "href": "/contact"
+      },
+      "backgroundColor": "#E7CAA1"
+    }
+  ]
 }
