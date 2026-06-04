@@ -1,0 +1,53 @@
+---
+import RichHeading from '../ui/RichHeading.astro';
+import Button from '../ui/Button.astro';
+
+interface Props {
+  heading: string;
+  body?: string;
+  image: string;
+  imageAlt?: string;
+  cta: { label: string; href: string };
+}
+
+const {
+  heading,
+  body,
+  image,
+  imageAlt = 'CTA image',
+  cta,
+} = Astro.props;
+---
+
+<section class="py-16 lg:py-24">
+  <div class="container mx-auto px-6 lg:px-10">
+    <div class="rounded-3xl overflow-hidden border border-border bg-[color:color-mix(in_srgb,var(--color-secondary)_40%,white)] grid lg:grid-cols-2 items-stretch">
+      <div class="p-8 lg:p-12 flex flex-col justify-center">
+        <RichHeading
+          text={heading}
+          as="h2"
+          class="font-serif text-3xl lg:text-5xl font-semibold leading-tight mb-5"
+        />
+
+        {body && (
+          <p class="text-base lg:text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
+            {body}
+          </p>
+        )}
+
+        <div>
+          <Button href={cta.href} size="lg">{cta.label}</Button>
+        </div>
+      </div>
+
+      <div class="min-h-[320px] lg:min-h-[100%]">
+        <img
+          src={image}
+          alt={imageAlt}
+          loading="lazy"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>

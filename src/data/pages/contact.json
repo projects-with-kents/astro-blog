@@ -9,13 +9,20 @@
       "type": "hero",
       "image": "/assets/hero-banner.jpg",
       "imageAlt": "Contact Us",
-      "badge": "рџ“ћ",
+      "badge": "📞",
       "heading": "Get in *Touch*",
       "subheading": "We'd love to hear from you. Contact us today!",
       "cta": {
         "label": "Schedule Visit",
         "href": "#contact-form"
       }
+    },
+    {
+      "type": "contact-form",
+      "heading": "Send us your request",
+      "body": "Use the form below to send enquiries, booking requests, or any other questions. Submissions are forwarded by Apps Script into Google Forms.",
+      "endpointUrl": "https://script.google.com/macros/s/AKfycby4xtkWdAPuUFLeanpjVV0oGfrrvQ5SoDSZysrZ2wfSHn8M5voZBJvtOQGTkhCFbjM4/exec",
+      "submitLabel": "Send request"
     },
     {
       "type": "cta",

@@ -1,0 +1,60 @@
+---
+import RichHeading from '../ui/RichHeading.astro';
+import Button from '../ui/Button.astro';
+
+interface Props {
+  badge?: string;
+  heading: string;
+  subheading?: string;
+  ctaPrimary?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+}
+
+const {
+  badge,
+  heading,
+  subheading,
+  ctaPrimary,
+  ctaSecondary,
+} = Astro.props;
+---
+
+<section class="py-24 lg:py-32">
+  <div class="container mx-auto px-6 lg:px-10 text-center">
+    {badge && (
+      <div class="mb-5">
+        <span class="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-sm text-muted-foreground">
+          <span class="w-2 h-2 rounded-full bg-accent"></span>
+          {badge}
+        </span>
+      </div>
+    )}
+
+    <RichHeading
+      text={heading}
+      as="h2"
+      class="font-serif text-4xl lg:text-6xl font-bold leading-[1.1] max-w-4xl mx-auto mb-6"
+    />
+
+    {subheading && (
+      <p class="text-base lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-10">
+        {subheading}
+      </p>
+    )}
+
+    {(ctaPrimary || ctaSecondary) && (
+      <div class="flex flex-wrap justify-center gap-3">
+        {ctaPrimary && (
+          <Button href={ctaPrimary.href} size="lg">
+            {ctaPrimary.label}
+          </Button>
+        )}
+        {ctaSecondary && (
+          <Button href={ctaSecondary.href} variant="outline" size="lg" class="text-foreground border-border hover:bg-muted">
+            {ctaSecondary.label}
+          </Button>
+        )}
+      </div>
+    )}
+  </div>
+</section>

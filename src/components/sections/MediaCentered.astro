@@ -1,0 +1,50 @@
+---
+interface Props {
+  kind?: 'image' | 'video';
+  image?: string;
+  imageAlt?: string;
+  videoSrc?: string;
+  poster?: string;
+  caption?: string;
+}
+
+const {
+  kind = 'image',
+  image,
+  imageAlt = 'Media',
+  videoSrc,
+  poster,
+  caption,
+} = Astro.props;
+
+const isVideo = kind === 'video' && !!videoSrc;
+---
+
+<section class="py-16 lg:py-24">
+  <div class="container mx-auto px-6 lg:px-10">
+    <div class="rounded-3xl overflow-hidden border border-border bg-muted">
+      {isVideo ? (
+        <video
+          src={videoSrc}
+          poster={poster}
+          controls
+          playsinline
+          class="w-full h-[min(70vh,640px)] object-cover"
+        ></video>
+      ) : (
+        <img
+          src={image}
+          alt={imageAlt}
+          loading="lazy"
+          class="w-full h-[min(70vh,640px)] object-cover"
+        />
+      )}
+    </div>
+
+    {caption && (
+      <p class="text-sm text-muted-foreground mt-4 text-center max-w-3xl mx-auto">
+        {caption}
+      </p>
+    )}
+  </div>
+</section>

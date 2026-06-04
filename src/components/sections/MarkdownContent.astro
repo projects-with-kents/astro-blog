@@ -1,0 +1,101 @@
+---
+import { marked } from 'marked';
+
+interface Props {
+  heading?: string;
+  markdown: string;
+}
+
+const { heading, markdown } = Astro.props;
+
+const html = marked.parse(markdown ?? '', {
+  gfm: true,
+  breaks: true,
+}) as string;
+---
+
+<section class="py-16 lg:py-24">
+  <div class="container mx-auto px-6 lg:px-10">
+    <div class="max-w-4xl mx-auto">
+      {heading && (
+        <h2 class="font-serif text-3xl lg:text-5xl font-semibold leading-tight mb-8">
+          {heading}
+        </h2>
+      )}
+
+      <article class="markdown-content" set:html={html}></article>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .markdown-content h1,
+  .markdown-content h2,
+  .markdown-content h3,
+  .markdown-content h4 {
+    font-family: var(--font-serif);
+    line-height: 1.2;
+    color: var(--color-foreground);
+    margin: 2rem 0 1rem;
+  }
+
+  .markdown-content h1 { font-size: 2.25rem; }
+  .markdown-content h2 { font-size: 1.875rem; }
+  .markdown-content h3 { font-size: 1.5rem; }
+
+  .markdown-content p {
+    font-size: 1.06rem;
+    line-height: 1.8;
+    color: var(--color-foreground);
+    margin-bottom: 1rem;
+  }
+
+  .markdown-content ul,
+  .markdown-content ol {
+    margin: 0.75rem 0 1.2rem 1.5rem;
+  }
+
+  .markdown-content ul { list-style: disc; }
+  .markdown-content ol { list-style: decimal; }
+
+  .markdown-content li {
+    margin-bottom: 0.45rem;
+    line-height: 1.75;
+  }
+
+  .markdown-content blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1rem;
+    color: var(--color-muted-foreground);
+    font-style: italic;
+    margin: 1.2rem 0;
+  }
+
+  .markdown-content code {
+    background: var(--color-muted);
+    border-radius: 0.3rem;
+    padding: 0.15rem 0.4rem;
+    font-size: 0.9em;
+  }
+
+  .markdown-content pre {
+    background: var(--color-overlay);
+    color: white;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    overflow: auto;
+    margin: 1.2rem 0;
+  }
+
+  .markdown-content pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  .markdown-content a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

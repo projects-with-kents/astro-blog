@@ -18,6 +18,13 @@ import Testimonials from './sections/Testimonials.astro';
 import CTA          from './sections/CTA.astro';
 import FAQ          from './sections/FAQ.astro';
 import InsiderHero  from './sections/InsiderHero.astro';
+import ContactForm  from './sections/ContactForm.astro';
+import HeroCentered from './sections/HeroCentered.astro';
+import MediaCentered from './sections/MediaCentered.astro';
+import Gallery from './sections/Gallery.astro';
+import StatsText from './sections/StatsText.astro';
+import LightCTAWithPhoto from './sections/LightCTAWithPhoto.astro';
+import MarkdownContent from './sections/MarkdownContent.astro';
 
 type HeroBlock = {
   type: 'hero';
@@ -105,7 +112,78 @@ type InsiderHeroBlock = {
   subheading?: string;
 };
 
-type Block = HeroBlock | ServicesBlock | FeatureBlock | TestimonialsBlock | CTABlock | FAQBlock | InsiderHeroBlock;
+type ContactFormBlock = {
+  type: 'contact-form';
+  heading: string;
+  body?: string;
+  endpointUrl: string;
+  submitLabel?: string;
+  note?: string;
+};
+
+type HeroCenteredBlock = {
+  type: 'hero-centered';
+  badge?: string;
+  heading: string;
+  subheading?: string;
+  ctaPrimary?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+};
+
+type MediaCenteredBlock = {
+  type: 'media-centered';
+  kind?: 'image' | 'video';
+  image?: string;
+  imageAlt?: string;
+  videoSrc?: string;
+  poster?: string;
+  caption?: string;
+};
+
+type GalleryItem = {
+  image: string;
+  imageAlt?: string;
+  caption?: string;
+};
+
+type GalleryBlock = {
+  type: 'gallery';
+  heading?: string;
+  body?: string;
+  variant?: 'grid-2' | 'mosaic' | 'strip';
+  items: GalleryItem[];
+};
+
+type StatsItem = {
+  value: string;
+  label: string;
+};
+
+type StatsTextBlock = {
+  type: 'stats-text';
+  heading: string;
+  body?: string;
+  stats: StatsItem[];
+  ctaPrimary?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+};
+
+type LightCTAWithPhotoBlock = {
+  type: 'light-cta-photo';
+  heading: string;
+  body?: string;
+  image: string;
+  imageAlt?: string;
+  cta: { label: string; href: string };
+};
+
+type MarkdownContentBlock = {
+  type: 'markdown-content';
+  heading?: string;
+  markdown: string;
+};
+
+type Block = HeroBlock | ServicesBlock | FeatureBlock | TestimonialsBlock | CTABlock | FAQBlock | InsiderHeroBlock | ContactFormBlock | HeroCenteredBlock | MediaCenteredBlock | GalleryBlock | StatsTextBlock | LightCTAWithPhotoBlock | MarkdownContentBlock;
 
 interface Props {
   sections: Block[];
@@ -186,6 +264,80 @@ const { sections } = Astro.props;
         <InsiderHero
           heading={block.heading}
           subheading={block.subheading}
+        />
+      );
+
+    case 'contact-form':
+      return (
+        <ContactForm
+          heading={block.heading}
+          body={block.body}
+          endpointUrl={block.endpointUrl}
+          submitLabel={block.submitLabel}
+          note={block.note}
+        />
+      );
+
+    case 'hero-centered':
+      return (
+        <HeroCentered
+          badge={block.badge}
+          heading={block.heading}
+          subheading={block.subheading}
+          ctaPrimary={block.ctaPrimary}
+          ctaSecondary={block.ctaSecondary}
+        />
+      );
+
+    case 'media-centered':
+      return (
+        <MediaCentered
+          kind={block.kind}
+          image={block.image}
+          imageAlt={block.imageAlt}
+          videoSrc={block.videoSrc}
+          poster={block.poster}
+          caption={block.caption}
+        />
+      );
+
+    case 'gallery':
+      return (
+        <Gallery
+          heading={block.heading}
+          body={block.body}
+          variant={block.variant}
+          items={block.items}
+        />
+      );
+
+    case 'stats-text':
+      return (
+        <StatsText
+          heading={block.heading}
+          body={block.body}
+          stats={block.stats}
+          ctaPrimary={block.ctaPrimary}
+          ctaSecondary={block.ctaSecondary}
+        />
+      );
+
+    case 'light-cta-photo':
+      return (
+        <LightCTAWithPhoto
+          heading={block.heading}
+          body={block.body}
+          image={block.image}
+          imageAlt={block.imageAlt}
+          cta={block.cta}
+        />
+      );
+
+    case 'markdown-content':
+      return (
+        <MarkdownContent
+          heading={block.heading}
+          markdown={block.markdown}
         />
       );
 

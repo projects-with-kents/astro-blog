@@ -232,6 +232,138 @@ content:
                   - { name: label, label: Label, type: string }
                   - { name: href,  label: URL,   type: string }
 
+          # ── Contact Form block ───────────────────────────
+          - name: contact-form
+            label: Contact Form
+            fields:
+              - name: heading
+                label: "Heading (use *asterisks* for italic)"
+                type: string
+              - { name: body, label: Body text (optional), type: text }
+              - { name: endpointUrl, label: Apps Script Bridge URL, type: string }
+              - { name: submitLabel, label: Submit button label, type: string }
+              - { name: note, label: Small note (optional), type: text }
+
+          # ── Hero Centered block ─────────────────────────
+          - name: hero-centered
+            label: Hero (Centered)
+            fields:
+              - { name: badge, label: Badge text (optional), type: string }
+              - name: heading
+                label: "Heading (use *asterisks* for italic)"
+                type: string
+              - { name: subheading, label: Subheading (optional), type: text }
+              - name: ctaPrimary
+                label: Primary button (optional)
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string }
+                  - { name: href,  label: URL,   type: string }
+              - name: ctaSecondary
+                label: Secondary button (optional)
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string }
+                  - { name: href,  label: URL,   type: string }
+
+          # ── Media Centered block ────────────────────────
+          - name: media-centered
+            label: Media (Centered)
+            fields:
+              - name: kind
+                label: Media type
+                type: select
+                options:
+                  values:
+                    - { value: image, label: Image }
+                    - { value: video, label: Video }
+              - { name: image,    label: Image (for image mode), type: image }
+              - { name: imageAlt, label: Image alt text,          type: string }
+              - { name: videoSrc, label: Video file URL (for video mode), type: string }
+              - { name: poster,   label: Video poster image (optional),   type: image }
+              - { name: caption,  label: Caption (optional),      type: text }
+
+          # ── Gallery block ───────────────────────────────
+          - name: gallery
+            label: Gallery
+            fields:
+              - { name: heading, label: Heading (optional), type: string }
+              - { name: body,    label: Description (optional), type: text }
+              - name: variant
+                label: Layout variant
+                type: select
+                options:
+                  values:
+                    - { value: grid-2, label: Two-column grid }
+                    - { value: mosaic, label: Mosaic }
+                    - { value: strip,  label: Three-column strip }
+              - name: items
+                label: Gallery items
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{caption}"
+                fields:
+                  - { name: image,    label: Image, type: image }
+                  - { name: imageAlt, label: Image alt text, type: string }
+                  - { name: caption,  label: Caption (optional), type: string }
+
+          # ── Stats + Text block ──────────────────────────
+          - name: stats-text
+            label: Stats + Text
+            fields:
+              - name: heading
+                label: "Heading (use *asterisks* for italic)"
+                type: string
+              - { name: body, label: Description (optional), type: text }
+              - name: ctaPrimary
+                label: Primary button (optional)
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string }
+                  - { name: href,  label: URL,   type: string }
+              - name: ctaSecondary
+                label: Secondary button (optional)
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string }
+                  - { name: href,  label: URL,   type: string }
+              - name: stats
+                label: Stats
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{value}"
+                fields:
+                  - { name: value, label: Value, type: string }
+                  - { name: label, label: Label, type: string }
+
+          # ── Light CTA + Photo block ─────────────────────
+          - name: light-cta-photo
+            label: Light CTA + Photo
+            fields:
+              - name: heading
+                label: "Heading (use *asterisks* for italic)"
+                type: string
+              - { name: body, label: Description (optional), type: text }
+              - { name: image, label: Photo, type: image }
+              - { name: imageAlt, label: Photo alt text, type: string }
+              - name: cta
+                label: Button
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string }
+                  - { name: href,  label: URL,   type: string }
+
+          # ── Markdown Content block ──────────────────────
+          - name: markdown-content
+            label: Markdown Content
+            fields:
+              - { name: heading,  label: Heading (optional), type: string }
+              - { name: markdown, label: Markdown body,      type: code }
+
           # -- Insider Hero block ------------------------------------------
           - name: insider-hero
             label: Insider Hero (Editorial)
