@@ -3,7 +3,7 @@
   "slug": "index",
   "title": "VetCare - Pet Grooming & Wellness",
   "description": "Professional pet care services",
-  "heroIsDark": true,
+  "heroIsDark": false,
   "sections": [
     {
       "type": "hero",
@@ -57,7 +57,7 @@
     {
       "type": "feature",
       "layout": "image-left",
-      "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+      "image": "/assets/werzk-luuuuuuu-tDlo2ZPlQlU-unsplash.jpg",
       "imageAlt": "Veterinary team caring for a cat",
       "heading": "Well-being isn't just for *human beings*.",
       "body": "There are many variations of passages available, but the majority have suffered alteration in some form by injected humour or randomized words.",
