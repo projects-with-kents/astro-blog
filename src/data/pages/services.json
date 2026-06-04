@@ -33,6 +33,18 @@
           "description": "Payment Methods for Pet Health and Wellbeing Consultation."
         }
       ]
+    },
+    {
+      "type": "feature",
+      "layout": "image-left",
+      "image": "/assets/677d860a3251c0fd985be4ae_Frame 2147226731-p-800.webp",
+      "imageAlt": "Preventative care",
+      "heading": "*Preventative* care",
+      "body": "Our preventative care services ensure your pet stays healthy and happy. Regular check-ups and vaccinations are key to preventing illness.",
+      "ctaPrimary": {
+        "label": "Learn More",
+        "href": "/services/preventative_care"
+      }
     }
   ]
 }
