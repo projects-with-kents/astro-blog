@@ -127,7 +127,11 @@ content:
               - name: layout
                 label: Layout
                 type: select
-                options: ["image-left", "image-right", "no-image"]
+                options:
+                  values:
+                    - { value: image-left,  label: "Image left" }
+                    - { value: image-right, label: "Image right" }
+                    - { value: no-image,    label: "No image (center text)" }
               - { name: image,    label: "Image (optional)",    type: image }
               - { name: imageAlt, label: "Image alt",           type: string }
               - name: heading
