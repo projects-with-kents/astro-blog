@@ -457,14 +457,14 @@ content:
         type: string
       - { name: heroSubheading, label: Hero Subheading,  type: text   }
 
-          # -- Insider Hero block ------------------------------------------
-          - name: insider-hero
-            label: Insider Hero (Editorial)
-            fields:
-              - name: heading
-                label: "Heading (use *asterisks* for italic)"
-                type: string
-              - { name: subheading, label: Subheading (optional), type: text }
+      # -- Insider Hero block ------------------------------------------
+      - name: insider-hero
+        label: Insider Hero (Editorial)
+        fields:
+          - name: heading
+            label: "Heading (use *asterisks* for italic)"
+            type: string
+          - { name: subheading, label: Subheading (optional), type: text }
 
   # -- Blog Collection -----------------------------------------------------
   - name: blog
