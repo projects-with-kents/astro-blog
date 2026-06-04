@@ -234,8 +234,9 @@ content:
   - name: pages
     label: Pages
     path: src/data/pages.json
-    type: collection
-    itemPath: /
+    type: file
+    format: json
+    list: true
     fields:
       - { name: id,          label: ID,          type: string }
       - { name: slug,        label: Slug (URL),  type: string }
