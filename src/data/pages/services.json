@@ -14,6 +14,25 @@
         "label": "Contact us",
         "href": "/contact"
       }
+    },
+    {
+      "type": "services",
+      "heading": "Health and wellness from nose to tail",
+      "subheading": "Comprehensive care designed for every stage of your pet's life because they deserve nothing but the best.",
+      "items": [
+        {
+          "title": "Schedule your visit for a comprehensive assessment",
+          "description": "Book an appointment to discuss your pet's health and wellness."
+        },
+        {
+          "title": "Visit your veterinarian for tailored care for your pet.",
+          "description": "We prioritize your pet's health through our comprehensive care approach."
+        },
+        {
+          "title": "Cancel with our various payment methods.",
+          "description": "Payment Methods for Pet Health and Wellbeing Consultation."
+        }
+      ]
     }
   ]
 }
