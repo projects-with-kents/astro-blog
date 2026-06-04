@@ -3,7 +3,7 @@
   "slug": "index",
   "title": "VetCare - Pet Grooming & Wellness",
   "description": "Professional pet care services",
-  "heroIsDark": true,
+  "heroIsDark": false,
   "sections": [
     {
       "type": "hero",
@@ -57,7 +57,7 @@
     {
       "type": "feature",
       "layout": "image-left",
-      "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+      "image": "/assets/werzk-luuuuuuu-tDlo2ZPlQlU-unsplash.jpg",
       "imageAlt": "Veterinary team caring for a cat",
       "heading": "Well-being isn't just for *human beings*.",
       "body": "There are many variations of passages available, but the majority have suffered alteration in some form by injected humour or randomized words.",
@@ -90,7 +90,7 @@
       "subheading": "Real stories from happy pets and their families.",
       "testimonials": [
         {
-          "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+          "image": "/assets/chewy-fGxiRXr2oZg-unsplash.jpg",
           "imageAlt": "Sarah W. with her dog Bella",
           "rating": 5,
           "quote": "An amazing service",
@@ -98,19 +98,19 @@
           "author": "Sarah W."
         },
         {
-          "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+          "image": "/assets/marc-land-gONkSid8oAE-unsplash.jpg",
           "imageAlt": "Mark D. with his cat",
           "rating": 5,
           "quote": "Exceptional care and attention",
-          "text": "Mark D. here вЂ” my cat Max was anxious about staying away from home, but the team at Groomy made him feel so comfortable. They provided updates and photos, which really helped ease my worries. The level of professionalism and genuine care is unmatched. Five stars all the way!",
+          "text": "Mark D. here my cat Max was anxious about staying away from home, but the team at Groomy made him feel so comfortable. They provided updates and photos, which really helped ease my worries. The level of professionalism and genuine care is unmatched. Five stars all the way!",
           "author": "Mark D."
         },
         {
-          "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+          "image": "/assets/janilson-furtado-6IM3s5DqKbI-unsplash.jpg",
           "imageAlt": "Jennifer K. with her pets",
           "rating": 5,
           "quote": "Best pet care service in town",
-          "text": "Jennifer K. speaking вЂ” I've tried several pet care services over the years, but Groomy stands out from the crowd. The team is knowledgeable, responsive, and genuinely passionate about animal welfare. My pets are always happy and well-cared for. Couldn't ask for better!",
+          "text": "Jennifer K. speaking I've tried several pet care services over the years, but Groomy stands out from the crowd. The team is knowledgeable, responsive, and genuinely passionate about animal welfare. My pets are always happy and well-cared for. Couldn't ask for better!",
           "author": "Jennifer K."
         }
       ]
@@ -118,7 +118,7 @@
     {
       "type": "cta",
       "heading": "Let's Give Your Pet *the Care* They Deserve",
-      "body": "Don't wait to give your furry friend the best care possible. Contact us now to schedule a visit вЂ“ we can't wait to meet you and your pet!",
+      "body": "Don't wait to give your furry friend the best care possible. Contact us now to schedule a visit we can't wait to meet you and your pet!",
       "ctaPrimary": {
         "label": "Reserve Now",
         "href": "/contact"
