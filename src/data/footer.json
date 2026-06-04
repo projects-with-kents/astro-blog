@@ -1,0 +1,41 @@
+{
+  "brand": {
+    "name": "VetCare",
+    "tagline": "Compassionate pet care with expert vets, groomers, and trainers you can trust.",
+    "address": "123 Paw Street, Pet City"
+  },
+  "columns": [
+    {
+      "title": "Company",
+      "links": [
+        { "label": "Home", "href": "/" },
+        { "label": "About Us", "href": "/about" },
+        { "label": "Services", "href": "/services" },
+        { "label": "Insider", "href": "/insider" }
+      ]
+    },
+    {
+      "title": "Support",
+      "links": [
+        { "label": "Contact", "href": "/contact" },
+        { "label": "Book Now", "href": "/book" },
+        { "label": "FAQ", "href": "/#faq" }
+      ]
+    },
+    {
+      "title": "Follow",
+      "links": [
+        { "label": "Instagram", "href": "https://instagram.com" },
+        { "label": "Facebook", "href": "https://facebook.com" },
+        { "label": "YouTube", "href": "https://youtube.com" }
+      ]
+    }
+  ],
+  "legal": {
+    "copyrightText": "VetCare. All rights reserved.",
+    "links": [
+      { "label": "Privacy Policy", "href": "/privacy" },
+      { "label": "Terms of Service", "href": "/terms" }
+    ]
+  }
+}

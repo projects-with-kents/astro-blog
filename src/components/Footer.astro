@@ -1,0 +1,85 @@
+---
+import LogoSVG from './LogoSVG.astro';
+import footerData from '../data/footer.json';
+
+interface LinkItem {
+  label: string;
+  href: string;
+}
+
+interface LinkColumn {
+  title: string;
+  links: LinkItem[];
+}
+
+interface FooterData {
+  brand: {
+    name: string;
+    tagline?: string;
+    address?: string;
+  };
+  columns: LinkColumn[];
+  legal: {
+    copyrightText: string;
+    links?: LinkItem[];
+  };
+}
+
+const data = footerData as FooterData;
+---
+
+<footer class="bg-overlay text-white/90 mt-24">
+  <div class="container mx-auto px-6 lg:px-10 py-14 lg:py-16">
+    <div class="grid gap-10 lg:grid-cols-[1.35fr_2fr] pb-12 border-b border-white/15">
+      <div>
+        <a href="/" class="inline-flex items-center gap-2 mb-5" aria-label={data.brand.name}>
+          <LogoSVG class="h-10 w-10 text-secondary" />
+          <span class="font-medium text-lg text-white">{data.brand.name}</span>
+        </a>
+
+        {data.brand.tagline && (
+          <p class="text-white/70 leading-relaxed max-w-md mb-4">{data.brand.tagline}</p>
+        )}
+
+        {data.brand.address && (
+          <p class="text-white/60 text-sm">{data.brand.address}</p>
+        )}
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {data.columns.map((column) => (
+          <div>
+            <h3 class="text-sm uppercase tracking-[0.16em] text-white/50 mb-4">{column.title}</h3>
+            <ul class="space-y-2.5">
+              {column.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-white/85 hover:text-secondary transition-colors"
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel={link.href.startsWith('http') ? 'noreferrer noopener' : undefined}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="pt-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+      <p class="text-sm text-white/55">© {new Date().getFullYear()} {data.legal.copyrightText}</p>
+      <ul class="flex flex-wrap gap-4 text-sm">
+        {data.legal.links?.map((link) => (
+          <li>
+            <a href={link.href} class="text-white/60 hover:text-secondary transition-colors">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>

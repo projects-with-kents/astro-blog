@@ -62,6 +62,54 @@ content:
           - { name: label, label: Label, type: string }
           - { name: href,  label: URL,   type: string }
 
+  # ── Global Footer ───────────────────────────────────────
+  - name: footer
+    label: Footer (Global)
+    path: src/data/footer.json
+    type: file
+    fields:
+      - name: brand
+        label: Brand
+        type: object
+        fields:
+          - { name: name, label: Brand name, type: string }
+          - { name: tagline, label: Tagline, type: text }
+          - { name: address, label: Address (optional), type: string }
+      - name: columns
+        label: Link columns
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - { name: title, label: Column title, type: string }
+          - name: links
+            label: Links
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+            fields:
+              - { name: label, label: Label, type: string }
+              - { name: href,  label: URL,   type: string }
+      - name: legal
+        label: Legal
+        type: object
+        fields:
+          - { name: copyrightText, label: Copyright text, type: string }
+          - name: links
+            label: Legal links
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+            fields:
+              - { name: label, label: Label, type: string }
+              - { name: href,  label: URL,   type: string }
+
   # ── Pages Collection ────────────────────────────────────
   - name: pages
     label: Pages
@@ -417,4 +465,9 @@ content:
         label: "Hero Heading (use *asterisks* for italic)"
         type: string
       - { name: heroSubheading, label: Hero Subheading,  type: text   }
+
+actions:
+  - name: deploy-site
+    label: Deploy Site
+    workflow: astro.yml
 
