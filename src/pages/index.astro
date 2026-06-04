@@ -1,15 +1,21 @@
 ---
 import Layout      from '../layouts/Layout.astro';
 import PageBuilder from '../components/PageBuilder.astro';
-import homeData    from '../data/home.json';
+import pagesData   from '../data/pages.json';
 
-// Hero is always the first block — drive the navbar dark-mode from data
-const heroIsDark = homeData.sections[0]?.type === 'hero';
+// Get the index page (homepage)
+const homePage = pagesData.find((p) => p.slug === 'index');
+
+if (!homePage) {
+  throw new Error('Home page not found in pages.json');
+}
+
+const heroIsDark = homePage.sections[0]?.type === 'hero';
 ---
-
 <Layout
-  title="VetCare — Compassionate Care for Your Pets"
+  title={homePage.title}
+  description={homePage.description}
   heroIsDark={heroIsDark}
 >
-  <PageBuilder sections={homeData.sections as any} />
+  <PageBuilder sections={homePage.sections as any} />
 </Layout>

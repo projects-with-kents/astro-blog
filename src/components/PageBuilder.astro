@@ -11,8 +11,12 @@
  *  3. Add a case to the switch in the template
  *  4. Add the block definition to .pages.yml under content[home].fields[sections].blocks
  */
-import Hero     from './sections/Hero.astro';
-import Services from './sections/Services.astro';
+import Hero         from './sections/Hero.astro';
+import Services     from './sections/Services.astro';
+import Feature      from './sections/Feature.astro';
+import Testimonials from './sections/Testimonials.astro';
+import CTA         from './sections/CTA.astro';
+import FAQ         from './sections/FAQ.astro';
 
 type HeroBlock = {
   type: 'hero';
@@ -26,7 +30,7 @@ type HeroBlock = {
 };
 
 type ServiceItem = {
-  icon: string;
+  icon?: string;
   title: string;
   description: string;
   href: string;
@@ -39,7 +43,62 @@ type ServicesBlock = {
   items: ServiceItem[];
 };
 
-type Block = HeroBlock | ServicesBlock;
+type FeatureListItem = {
+  text: string;
+  bulletIcon?: string;
+};
+
+type FeatureBlock = {
+  type: 'feature';
+  layout?: 'image-left' | 'image-right' | 'no-image';
+  image?: string;
+  imageAlt?: string;
+  heading: string;
+  body: string;
+  features: FeatureListItem[];
+  ctaPrimary?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+};
+
+type Testimonial = {
+  image?: string;
+  imageAlt?: string;
+  rating: number;
+  quote: string;
+  text: string;
+  author: string;
+};
+
+type TestimonialsBlock = {
+  type: 'testimonials';
+  heading: string;
+  subheading?: string;
+  testimonials: Testimonial[];
+};
+
+type CTABlock = {
+  type: 'cta';
+  heading: string;
+  body: string;
+  ctaPrimary?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+  backgroundColor?: string;
+};
+
+type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+type FAQBlock = {
+  type: 'faq';
+  heading: string;
+  body?: string;
+  faqs: FAQItem[];
+  cta?: { label: string; href: string };
+};
+
+type Block = HeroBlock | ServicesBlock | FeatureBlock | TestimonialsBlock | CTABlock | FAQBlock;
 
 interface Props {
   sections: Block[];
@@ -68,6 +127,50 @@ const { sections } = Astro.props;
           heading={block.heading}
           subheading={block.subheading}
           items={block.items}
+        />
+      );
+
+    case 'feature':
+      return (
+        <Feature
+          layout={block.layout}
+          image={block.image}
+          imageAlt={block.imageAlt}
+          heading={block.heading}
+          body={block.body}
+          features={block.features}
+          ctaPrimary={block.ctaPrimary}
+          ctaSecondary={block.ctaSecondary}
+        />
+      );
+
+    case 'testimonials':
+      return (
+        <Testimonials
+          heading={block.heading}
+          subheading={block.subheading}
+          testimonials={block.testimonials}
+        />
+      );
+
+    case 'cta':
+      return (
+        <CTA
+          heading={block.heading}
+          body={block.body}
+          ctaPrimary={block.ctaPrimary}
+          ctaSecondary={block.ctaSecondary}
+          backgroundColor={block.backgroundColor}
+        />
+      );
+
+    case 'faq':
+      return (
+        <FAQ
+          heading={block.heading}
+          body={block.body}
+          faqs={block.faqs}
+          cta={block.cta}
         />
       );
 

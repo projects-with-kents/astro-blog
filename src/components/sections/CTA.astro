@@ -1,0 +1,62 @@
+---
+import RichHeading from '../ui/RichHeading.astro';
+import Button from '../ui/Button.astro';
+
+interface Props {
+  heading: string;
+  body: string;
+  ctaPrimary?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+  backgroundColor?: string;
+}
+
+const { 
+  heading, 
+  body, 
+  ctaPrimary, 
+  ctaSecondary, 
+  backgroundColor = 'var(--color-primary)' 
+} = Astro.props;
+---
+
+<section class="py-10 md:py-16">
+  <div 
+    class="container mx-auto px-6 lg:px-10 py-20 md:py-32 rounded-3xl text-white"
+    style={`background-color: ${backgroundColor}`}
+  >
+    <div class="max-w-2xl">
+      <RichHeading
+        text={heading}
+        as="h2"
+        class="font-serif text-4xl lg:text-5xl font-bold leading-tight mb-5"
+      />
+      
+      <p class="text-base lg:text-lg leading-relaxed mb-8 opacity-90">
+        {body}
+      </p>
+
+      {(ctaPrimary || ctaSecondary) && (
+        <div class="flex flex-wrap gap-4">
+          {ctaPrimary && (
+            <Button
+              variant="hero"
+              size="md"
+              href={ctaPrimary.href}
+            >
+              {ctaPrimary.label}
+            </Button>
+          )}
+          {ctaSecondary && (
+            <Button
+              variant="hero"
+              size="md"
+              href={ctaSecondary.href}
+            >
+              {ctaSecondary.label}
+            </Button>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

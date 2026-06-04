@@ -1,0 +1,113 @@
+---
+import Button from '../ui/Button.astro';
+import RichHeading from '../ui/RichHeading.astro';
+
+type FeatureLayout = 'image-left' | 'image-right' | 'no-image';
+
+type FeatureItem = {
+  text: string;
+  bulletIcon?: string;
+};
+
+interface Props {
+  layout?: FeatureLayout;
+  image?: string;
+  imageAlt?: string;
+  heading: string;
+  body: string;
+  features: FeatureItem[];
+  ctaPrimary?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+}
+
+const {
+  layout = 'image-left',
+  image,
+  imageAlt = 'Feature image',
+  heading,
+  body,
+  features = [],
+  ctaPrimary,
+  ctaSecondary,
+} = Astro.props;
+
+const effectiveLayout: FeatureLayout = !image || layout === 'no-image' ? 'no-image' : layout;
+const isImageRight = effectiveLayout === 'image-right';
+const isNoImage = effectiveLayout === 'no-image';
+---
+
+<section class="bg-white py-24">
+  <div class="container mx-auto px-6 lg:px-10">
+    <div class:list={[
+      'grid gap-10 lg:gap-16 items-center',
+      isNoImage ? 'max-w-4xl mx-auto grid-cols-1' : 'lg:grid-cols-2',
+    ]}>
+      {!isNoImage && (
+        <div class:list={[
+          'rounded-3xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-muted)]',
+          isImageRight ? 'lg:order-2' : 'lg:order-1',
+        ]}>
+          <img
+            src={image}
+            alt={imageAlt}
+            class="w-full h-[360px] md:h-[460px] object-cover"
+            loading="lazy"
+          />
+        </div>
+      )}
+
+      <div class:list={[
+        isNoImage ? 'text-center max-w-3xl mx-auto' : (isImageRight ? 'lg:order-1' : 'lg:order-2'),
+      ]}>
+        <RichHeading
+          text={heading}
+          as="h2"
+          class="font-serif text-4xl lg:text-6xl font-bold text-[var(--color-foreground)] leading-[1.08] mb-6"
+        />
+
+        <p class:list={[
+          'text-[var(--color-muted-foreground)] text-base lg:text-lg leading-relaxed mb-8',
+          isNoImage ? 'mx-auto max-w-2xl' : 'max-w-xl',
+        ]}>
+          {body}
+        </p>
+
+        {features.length > 0 && (
+          <ul class:list={[
+            'grid gap-4 mb-10',
+            isNoImage ? 'sm:grid-cols-2 text-left max-w-3xl mx-auto' : 'sm:grid-cols-2',
+          ]}>
+            {features.map((item) => (
+              <li class="flex items-center gap-3 text-[var(--color-foreground)] text-lg">
+                {item.bulletIcon && (
+                  <span class="w-7 h-7 rounded-full bg-[var(--color-secondary)]/55 border border-[var(--color-border)] flex items-center justify-center shrink-0">
+                    <img src={item.bulletIcon} alt="" aria-hidden="true" class="w-3 h-3 object-contain" loading="lazy" />
+                  </span>
+                )}
+                <span>{item.text}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {(ctaPrimary || ctaSecondary) && (
+          <div class:list={[
+            'flex flex-wrap gap-3',
+            isNoImage ? 'justify-center' : 'justify-start',
+          ]}>
+            {ctaPrimary && (
+              <Button href={ctaPrimary.href} size="lg" class="min-w-40">
+                {ctaPrimary.label}
+              </Button>
+            )}
+            {ctaSecondary && (
+              <Button href={ctaSecondary.href} variant="outline" size="lg" class="min-w-40 text-[var(--color-foreground)] border-[var(--color-border)] hover:bg-[var(--color-muted)]">
+                {ctaSecondary.label}
+              </Button>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageBuilder from '../components/PageBuilder.astro';
+import pagesData from '../data/pages.json';
+
+export async function getStaticPaths() {
+  return pagesData.map((page) => ({
+    params: { slug: page.slug === 'index' ? undefined : page.slug },
+    props: { page },
+  }));
+}
+
+interface Props {
+  page: (typeof pagesData)[number];
+}
+
+const { page } = Astro.props;
+---
+
+<Layout 
+  title={page.title}
+  description={page.description}
+  heroIsDark={page.heroIsDark}
+>
+  <PageBuilder sections={page.sections as any} />
+</Layout>
