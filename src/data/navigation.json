@@ -1,0 +1,18 @@
+{
+  "logo": {
+    "alt": "VetCare"
+  },
+  "linksLeft": [
+    { "label": "Home",     "href": "/" },
+    { "label": "Services", "href": "/services" },
+    { "label": "About Us", "href": "/about" }
+  ],
+  "linksRight": [
+    { "label": "Contact Us", "href": "/contact" },
+    { "label": "Insider",    "href": "/insider" }
+  ],
+  "cta": {
+    "label": "Book Now",
+    "href": "/book"
+  }
+}

@@ -1,0 +1,78 @@
+# Pages CMS configuration
+# Docs: https://pagescms.org/docs/configuration
+# Edit content at: https://app.pagescms.org (connect your GitHub repo)
+
+media:
+  input: public/assets
+  output: /assets
+
+content:
+
+  # ── Announcement Bar ─────────────────────────────────────
+  - name: announcement
+    label: Announcement Bar
+    path: src/data/announcement.json
+    type: file
+    fields:
+      - { name: enabled, label: "Show bar", type: boolean }
+      - name: items
+        label: Items
+        type: list
+        fields:
+          - { name: text,  label: Text,  type: string }
+          - { name: emoji, label: Emoji, type: string }
+          - name: link
+            label: Optional Link
+            type: object
+            fields:
+              - { name: label, label: Link Label, type: string }
+              - { name: url,   label: URL,        type: string }
+
+  # ── Navigation ───────────────────────────────────────────
+  - name: navigation
+    label: Navigation
+    path: src/data/navigation.json
+    type: file
+    fields:
+      - name: linksLeft
+        label: Left Links
+        type: list
+        fields:
+          - { name: label, label: Label, type: string }
+          - { name: href,  label: URL,   type: string }
+      - name: linksRight
+        label: Right Links
+        type: list
+        fields:
+          - { name: label, label: Label, type: string }
+          - { name: href,  label: URL,   type: string }
+      - name: cta
+        label: CTA Button
+        type: object
+        fields:
+          - { name: label, label: Label, type: string }
+          - { name: href,  label: URL,   type: string }
+
+  # ── Home Page ────────────────────────────────────────────
+  - name: home
+    label: Home Page
+    path: src/data/home.json
+    type: file
+    fields:
+      - name: hero
+        label: Hero Section
+        type: object
+        fields:
+          - { name: image,          label: Background Image, type: image }
+          - { name: imageAlt,       label: Image Alt Text,   type: string }
+          - { name: badge,          label: Badge Text,       type: string }
+          - { name: headingPrefix,  label: Heading (plain),  type: string }
+          - { name: headingItalic,  label: Heading (italic part), type: string }
+          - { name: headingSuffix,  label: Heading (end),    type: string }
+          - { name: subheading,     label: Subheading,       type: text }
+          - name: cta
+            label: CTA Button
+            type: object
+            fields:
+              - { name: label, label: Label, type: string }
+              - { name: href,  label: URL,   type: string }

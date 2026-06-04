@@ -1,0 +1,83 @@
+---
+interface Props {
+  image:         string;
+  imageAlt:      string;
+  badge?:        string;
+  headingPrefix: string;
+  headingItalic: string;
+  headingSuffix: string;
+  subheading:    string;
+  cta: { label: string; href: string };
+}
+
+const {
+  image,
+  imageAlt,
+  badge,
+  headingPrefix,
+  headingItalic,
+  headingSuffix,
+  subheading,
+  cta,
+} = Astro.props;
+---
+
+<section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+
+  <!-- Background image -->
+  <img
+    src={image}
+    alt={imageAlt}
+    class="absolute inset-0 w-full h-full object-cover object-center"
+    loading="eager"
+    fetchpriority="high"
+  />
+
+  <!-- Gradient overlay — heavy on left for readability, fades right -->
+  <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/15"></div>
+  <!-- Bottom vignette -->
+  <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/40 to-transparent"></div>
+
+  <!--
+    Sentinel element watched by Navbar's IntersectionObserver.
+    When this leaves the viewport the navbar switches to light mode.
+  -->
+  <div id="hero-sentinel" class="absolute bottom-4 left-0 w-px h-px pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Content -->
+  <div
+    class="relative z-10 w-full container mx-auto px-6 lg:px-10 pb-20"
+    style="padding-top: calc(var(--announcement-height, 40px) + 96px);"
+  >
+    <div class="max-w-2xl">
+
+      <!-- Badge -->
+      {badge && (
+        <div class="mb-6">
+          <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs font-medium px-3 py-1.5 rounded-full tracking-wide">
+            {badge}
+          </span>
+        </div>
+      )}
+
+      <!-- Heading -->
+      <h1 class="font-serif text-white font-bold leading-[1.15] mb-6 text-5xl lg:text-6xl xl:text-7xl">
+        {headingPrefix}<em class="italic">{headingItalic}</em>{headingSuffix}
+      </h1>
+
+      <!-- Subheading -->
+      <p class="text-white/75 text-base lg:text-lg max-w-lg mb-10 leading-relaxed">
+        {subheading}
+      </p>
+
+      <!-- CTA button -->
+      <a
+        href={cta.href}
+        class="inline-flex items-center gap-2.5 border border-white/80 text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-white hover:text-foreground transition-all duration-200"
+      >
+        {cta.label}
+      </a>
+
+    </div>
+  </div>
+</section>

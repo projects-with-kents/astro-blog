@@ -1,0 +1,59 @@
+---
+interface Props {
+  enabled: boolean;
+  items: Array<{
+    text: string;
+    emoji?: string;
+    link?: { label: string; url: string } | null;
+  }>;
+}
+
+const { enabled, items } = Astro.props;
+---
+
+{enabled && (
+  <div
+    id="announcement-bar"
+    style="height: var(--announcement-height, 40px);"
+    class="fixed top-0 left-0 right-0 z-[60] bg-[var(--color-overlay)] text-white text-sm flex items-center overflow-hidden transition-all duration-300"
+  >
+    <div class="container mx-auto px-4 flex items-center justify-center gap-3">
+      {items.map((item) => (
+        <p class="flex items-center gap-1.5">
+          {item.emoji && <span aria-hidden="true">{item.emoji}</span>}
+          <span>{item.text}</span>
+          {item.emoji && <span aria-hidden="true">{item.emoji}</span>}
+          {item.link && (
+            <a
+              href={item.link.url}
+              class="underline ml-1 hover:text-secondary transition-colors"
+            >
+              {item.link.label}
+            </a>
+          )}
+        </p>
+      ))}
+    </div>
+
+    <button
+      id="close-announcement"
+      aria-label="Close announcement"
+      class="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors text-xl leading-none"
+    >
+      ×
+    </button>
+  </div>
+)}
+
+<script>
+  const closeBtn = document.getElementById('close-announcement');
+  const bar      = document.getElementById('announcement-bar') as HTMLElement | null;
+
+  closeBtn?.addEventListener('click', () => {
+    if (!bar) return;
+    bar.style.height   = '0px';
+    bar.style.overflow = 'hidden';
+    // Shift navbar and hero padding up
+    document.documentElement.style.setProperty('--announcement-height', '0px');
+  });
+</script>

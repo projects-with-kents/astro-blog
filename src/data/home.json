@@ -1,0 +1,15 @@
+{
+  "hero": {
+    "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+    "imageAlt": "French bulldog at the veterinary clinic",
+    "badge": "Trusted by 5,000+ Pet Owners",
+    "headingPrefix": "Step into the ",
+    "headingItalic": "world of furry",
+    "headingSuffix": " Friends!",
+    "subheading": "Whether you're looking for a veterinarian, groomer, or a compassionate care team — we're crafted to cater to your unique needs and aspirations.",
+    "cta": {
+      "label": "Get Started",
+      "href": "/services"
+    }
+  }
+}

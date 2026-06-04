@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  /* ─── Typography ──────────────────────────────────────────── */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Playfair Display', ui-serif, Georgia, serif;
+
+  /* ─── Color tokens (shadcn-style) ────────────────────────── */
+
+  /* Page base */
+  --color-background:          #FBF8F3;
+  --color-foreground:          #1C1610;
+
+  /* Primary — warm dark brown */
+  --color-primary:             #5C3D1E;
+  --color-primary-foreground:  #FBF8F3;
+
+  /* Secondary — warm tan/cream (matches logo accent) */
+  --color-secondary:           #E7CAA1;
+  --color-secondary-foreground:#1C1610;
+
+  /* Muted — light tan for subtle backgrounds */
+  --color-muted:               #F0E8DA;
+  --color-muted-foreground:    #8A7260;
+
+  /* Accent — golden brown for highlights & hover */
+  --color-accent:              #C49A6C;
+  --color-accent-foreground:   #FBF8F3;
+
+  /* Card */
+  --color-card:                #FFFFFF;
+  --color-card-foreground:     #1C1610;
+
+  /* Destructive */
+  --color-destructive:         #DC2626;
+  --color-destructive-foreground: #FAFAFA;
+
+  /* UI chrome */
+  --color-border:              #DDD0BC;
+  --color-input:               #DDD0BC;
+  --color-ring:                #C49A6C;
+
+  /* Dark overlay (hero bg, announcement bar) */
+  --color-overlay:             #1A1714;
+}
+
+@layer base {
+  :root {
+    /* Controlled by JS when announcement bar is dismissed */
+    --announcement-height: 40px;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

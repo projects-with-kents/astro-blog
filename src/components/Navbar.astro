@@ -1,0 +1,151 @@
+---
+import LogoSVG from './LogoSVG.astro';
+import navData from '../data/navigation.json';
+
+interface Props {
+  /** True when the first section (hero) has a dark background. */
+  heroIsDark?: boolean;
+}
+
+const { heroIsDark = false } = Astro.props;
+const { linksLeft, linksRight, cta, logo } = navData;
+---
+
+<header
+  id="navbar"
+  data-hero-dark={heroIsDark ? 'true' : 'false'}
+  class="fixed left-0 right-0 z-50 transition-all duration-300"
+>
+  <nav class="container mx-auto px-6 h-16 flex items-center justify-between relative">
+
+    <!-- Left links -->
+    <ul class="hidden md:flex items-center gap-7">
+      {linksLeft.map((link) => (
+        <li>
+          <a href={link.href} class="nav-link text-sm font-medium transition-colors duration-300 hover:opacity-70">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Center: Logo -->
+    <a href="/" class="absolute left-1/2 -translate-x-1/2 flex items-center" aria-label={logo.alt}>
+      <LogoSVG class="nav-logo h-10 w-10 transition-colors duration-300" />
+    </a>
+
+    <!-- Right links + CTA -->
+    <div class="flex items-center gap-7">
+      <ul class="hidden md:flex items-center gap-7">
+        {linksRight.map((link) => (
+          <li>
+            <a href={link.href} class="nav-link text-sm font-medium transition-colors duration-300 hover:opacity-70">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href={cta.href}
+        class="cta-btn hidden md:inline-flex items-center gap-2 border text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-300"
+      >
+        {cta.label}
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 nav-link" aria-label="Open menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile dropdown -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-white border-t border-border"
+  >
+    <ul class="container mx-auto px-6 py-4 flex flex-col gap-4">
+      {[...linksLeft, ...linksRight].map((link) => (
+        <li>
+          <a href={link.href} class="text-foreground text-sm font-medium block py-1">
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a
+          href={cta.href}
+          class="inline-flex items-center gap-2 border border-primary text-primary text-sm font-medium px-4 py-1.5 rounded-full"
+        >
+          {cta.label}
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  /* Navbar top follows announcement bar height */
+  #navbar {
+    top: var(--announcement-height, 40px);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, top 0.3s ease;
+  }
+
+  /* ── Dark state (transparent, white text — over hero) ────── */
+  #navbar.is-dark {
+    background-color: transparent;
+  }
+  #navbar.is-dark .nav-link  { color: rgba(255, 255, 255, 0.92); }
+  #navbar.is-dark .nav-logo  { color: #E7CAA1; }
+  #navbar.is-dark .cta-btn   { border-color: rgba(255,255,255,0.7); color: white; }
+  #navbar.is-dark .cta-btn:hover { background-color: white; color: #1C1610; }
+
+  /* ── Light state (white bg, dark text — scrolled) ────────── */
+  #navbar.is-light {
+    background-color: white;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.07);
+  }
+  #navbar.is-light .nav-link  { color: #1C1610; }
+  #navbar.is-light .nav-logo  { color: #5C3D1E; }
+  #navbar.is-light .cta-btn   { border-color: #5C3D1E; color: #5C3D1E; }
+  #navbar.is-light .cta-btn:hover { background-color: #5C3D1E; color: #FBF8F3; }
+</style>
+
+<script>
+  const navbar      = document.getElementById('navbar') as HTMLElement;
+  const mobileBtn   = document.getElementById('mobile-menu-btn') as HTMLButtonElement;
+  const mobileMenu  = document.getElementById('mobile-menu') as HTMLElement;
+  const isHeroDark  = navbar?.dataset.heroDark === 'true';
+
+  // ── Set initial nav state ───────────────────────────────────
+  navbar?.classList.add(isHeroDark ? 'is-dark' : 'is-light');
+
+  // ── Observe hero sentinel to switch nav appearance ──────────
+  const sentinel = document.getElementById('hero-sentinel');
+  if (sentinel && isHeroDark) {
+    const observer = new IntersectionObserver(([entry]) => {
+      navbar.classList.toggle('is-dark',  entry.isIntersecting);
+      navbar.classList.toggle('is-light', !entry.isIntersecting);
+    }, { threshold: 0 });
+
+    observer.observe(sentinel);
+  }
+
+  // ── Mobile menu toggle ──────────────────────────────────────
+  mobileBtn?.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden', isOpen);
+    mobileBtn.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  // Close mobile menu on link click
+  mobileMenu?.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      mobileBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
