@@ -230,171 +230,171 @@ content:
                   - { name: label, label: Label, type: string }
                   - { name: href,  label: URL,   type: string }
 
-    # ── Pages Collection ────────────────────────────────────
-    - name: pages
-      label: Pages
-      path: src/data/pages.json
-      type: collection
-      itemPath: /
-      fields:
-        - { name: id,          label: ID,          type: string }
-        - { name: slug,        label: Slug (URL),  type: string }
-        - { name: title,       label: Page Title,  type: string }
-        - { name: description, label: Meta Description, type: string }
-        - { name: heroIsDark,  label: "Dark hero navbar", type: boolean }
-        - name: sections
-          label: Page Sections
-          type: object
-          list: true
-          blocks:
-            # ── Hero block ───────────────────────────────────
-            - name: hero
-              label: Hero Section
-              fields:
-                - { name: image,      label: "Background image", type: image }
-                - { name: imageAlt,   label: "Image alt",        type: string }
-                - { name: badge,      label: "Badge emoji",      type: string }
-                - name: heading
-                  label: "Heading (use *asterisks* for italic)"
-                  type: string
-                - { name: subheading, label: Subheading, type: text }
-                - name: cta
-                  label: Button
-                  type: object
-                  fields:
-                    - { name: label, label: Label, type: string }
-                    - { name: href,  label: URL,   type: string }
+  # ── Pages Collection ────────────────────────────────────
+  - name: pages
+    label: Pages
+    path: src/data/pages.json
+    type: collection
+    itemPath: /
+    fields:
+      - { name: id,          label: ID,          type: string }
+      - { name: slug,        label: Slug (URL),  type: string }
+      - { name: title,       label: Page Title,  type: string }
+      - { name: description, label: Meta Description, type: string }
+      - { name: heroIsDark,  label: "Dark hero navbar", type: boolean }
+      - name: sections
+        label: Page Sections
+        type: object
+        list: true
+        blocks:
+          # ── Hero block ───────────────────────────────────
+          - name: hero
+            label: Hero Section
+            fields:
+              - { name: image,      label: "Background image", type: image }
+              - { name: imageAlt,   label: "Image alt",        type: string }
+              - { name: badge,      label: "Badge emoji",      type: string }
+              - name: heading
+                label: "Heading (use *asterisks* for italic)"
+                type: string
+              - { name: subheading, label: Subheading, type: text }
+              - name: cta
+                label: Button
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string }
+                  - { name: href,  label: URL,   type: string }
 
-            # ── Services block ───────────────────────────────
-            - name: services
-              label: Services Grid
-              fields:
-                - name: heading
-                  label: "Heading (use *asterisks* for italic)"
-                  type: string
-                - { name: subheading, label: Subheading, type: text }
-                - name: items
-                  label: Services
-                  type: object
-                  list:
-                    collapsible:
-                      collapsed: true
-                      summary: "{title}"
-                  fields:
-                    - { name: icon,        label: "Icon image (optional)", type: image }
-                    - { name: title,       label: Title,       type: string }
-                    - { name: description, label: Description, type: text }
-                    - { name: href,        label: Link URL,    type: string }
+          # ── Services block ───────────────────────────────
+          - name: services
+            label: Services Grid
+            fields:
+              - name: heading
+                label: "Heading (use *asterisks* for italic)"
+                type: string
+              - { name: subheading, label: Subheading, type: text }
+              - name: items
+                label: Services
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
+                fields:
+                  - { name: icon,        label: "Icon image (optional)", type: image }
+                  - { name: title,       label: Title,       type: string }
+                  - { name: description, label: Description, type: text }
+                  - { name: href,        label: Link URL,    type: string }
 
-            # ── Feature block ────────────────────────────────
-            - name: feature
-              label: Feature Section
-              fields:
-                - name: layout
-                  label: Layout
-                  type: select
-                  options: ["image-left", "image-right", "no-image"]
-                - { name: image,    label: "Image (optional)",    type: image }
-                - { name: imageAlt, label: "Image alt",           type: string }
-                - name: heading
-                  label: "Heading (use *asterisks* for italic)"
-                  type: string
-                - { name: body, label: Body text, type: text }
-                - name: features
-                  label: Feature list
-                  type: object
-                  list:
-                    collapsible:
-                      collapsed: true
-                      summary: "{text}"
-                  fields:
-                    - { name: bulletIcon, label: "Bullet icon image (optional)", type: image }
-                    - { name: text,       label: Text, type: string }
-                - name: ctaPrimary
-                  label: Primary button (optional)
-                  type: object
-                  fields:
-                    - { name: label, label: Label, type: string }
-                    - { name: href,  label: URL,   type: string }
-                - name: ctaSecondary
-                  label: Secondary button (optional)
-                  type: object
-                  fields:
-                    - { name: label, label: Label, type: string }
-                    - { name: href,  label: URL,   type: string }
+          # ── Feature block ────────────────────────────────
+          - name: feature
+            label: Feature Section
+            fields:
+              - name: layout
+                label: Layout
+                type: select
+                options: ["image-left", "image-right", "no-image"]
+              - { name: image,    label: "Image (optional)",    type: image }
+              - { name: imageAlt, label: "Image alt",           type: string }
+              - name: heading
+                label: "Heading (use *asterisks* for italic)"
+                type: string
+              - { name: body, label: Body text, type: text }
+              - name: features
+                label: Feature list
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{text}"
+                fields:
+                  - { name: bulletIcon, label: "Bullet icon image (optional)", type: image }
+                  - { name: text,       label: Text, type: string }
+              - name: ctaPrimary
+                label: Primary button (optional)
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string }
+                  - { name: href,  label: URL,   type: string }
+              - name: ctaSecondary
+                label: Secondary button (optional)
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string }
+                  - { name: href,  label: URL,   type: string }
 
-            # ── Testimonials block ───────────────────────────
-            - name: testimonials
-              label: Testimonials Carousel
-              fields:
-                - name: heading
-                  label: "Heading (use *asterisks* for italic)"
-                  type: string
-                - { name: subheading, label: Subheading (optional), type: text }
-                - name: testimonials
-                  label: Reviews
-                  type: object
-                  list:
-                    collapsible:
-                      collapsed: true
-                      summary: "{author} — \"{quote}\""
-                  fields:
-                    - { name: image,    label: "Image (optional)",    type: image }
-                    - { name: imageAlt, label: "Image alt",           type: string }
-                    - name: rating
-                      label: Star rating (1-5)
-                      type: number
-                    - { name: quote,    label: Quote/title,          type: string }
-                    - { name: text,     label: Review text,          type: text }
-                    - { name: author,   label: Author name,          type: string }
+          # ── Testimonials block ───────────────────────────
+          - name: testimonials
+            label: Testimonials Carousel
+            fields:
+              - name: heading
+                label: "Heading (use *asterisks* for italic)"
+                type: string
+              - { name: subheading, label: Subheading (optional), type: text }
+              - name: testimonials
+                label: Reviews
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{author} — \"{quote}\""
+                fields:
+                  - { name: image,    label: "Image (optional)",    type: image }
+                  - { name: imageAlt, label: "Image alt",           type: string }
+                  - name: rating
+                    label: Star rating (1-5)
+                    type: number
+                  - { name: quote,    label: Quote/title,          type: string }
+                  - { name: text,     label: Review text,          type: text }
+                  - { name: author,   label: Author name,          type: string }
 
-            # ── CTA block ─────────────────────────────────────
-            - name: cta
-              label: Call To Action
-              fields:
-                - name: heading
-                  label: "Heading (use *asterisks* for italic)"
-                  type: string
-                - { name: body, label: Body text, type: text }
-                - name: ctaPrimary
-                  label: Primary button (optional)
-                  type: object
-                  fields:
-                    - { name: label, label: Label, type: string }
-                    - { name: href,  label: URL,   type: string }
-                - name: ctaSecondary
-                  label: Secondary button (optional)
-                  type: object
-                  fields:
-                    - { name: label, label: Label, type: string }
-                    - { name: href,  label: URL,   type: string }
-                - name: backgroundColor
-                  label: "Background color (hex, e.g. #5C3D1E)"
-                  type: string
-                  default: "var(--color-primary)"
+          # ── CTA block ─────────────────────────────────────
+          - name: cta
+            label: Call To Action
+            fields:
+              - name: heading
+                label: "Heading (use *asterisks* for italic)"
+                type: string
+              - { name: body, label: Body text, type: text }
+              - name: ctaPrimary
+                label: Primary button (optional)
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string }
+                  - { name: href,  label: URL,   type: string }
+              - name: ctaSecondary
+                label: Secondary button (optional)
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string }
+                  - { name: href,  label: URL,   type: string }
+              - name: backgroundColor
+                label: "Background color (hex, e.g. #5C3D1E)"
+                type: string
+                default: "var(--color-primary)"
 
-            # ── FAQ block ─────────────────────────────────────
-            - name: faq
-              label: FAQ (Accordion)
-              fields:
-                - name: heading
-                  label: "Heading (use *asterisks* for italic)"
-                  type: string
-                - { name: body, label: Description (optional), type: text }
-                - name: faqs
-                  label: Questions
-                  type: object
-                  list:
-                    collapsible:
-                      collapsed: true
-                      summary: "{question}"
-                  fields:
-                    - { name: question, label: Question, type: string }
-                    - { name: answer,   label: Answer,   type: text }
-                - name: cta
-                  label: Contact CTA (optional)
-                  type: object
-                  fields:
-                    - { name: label, label: Label, type: string }
-                    - { name: href,  label: URL,   type: string }
+          # ── FAQ block ─────────────────────────────────────
+          - name: faq
+            label: FAQ (Accordion)
+            fields:
+              - name: heading
+                label: "Heading (use *asterisks* for italic)"
+                type: string
+              - { name: body, label: Description (optional), type: text }
+              - name: faqs
+                label: Questions
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{question}"
+                fields:
+                  - { name: question, label: Question, type: string }
+                  - { name: answer,   label: Answer,   type: text }
+              - name: cta
+                label: Contact CTA (optional)
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string }
+                  - { name: href,  label: URL,   type: string }
 
