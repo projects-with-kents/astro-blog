@@ -470,4 +470,6 @@ actions:
   - name: deploy-site
     label: Deploy Site
     workflow: astro.yml
+    ref: current
+    cancelable: false
 
