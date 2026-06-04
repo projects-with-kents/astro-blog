@@ -1,58 +1,19 @@
 {
   "id": "services",
   "slug": "services",
-  "title": "Our Services - Professional Pet Care",
-  "description": "Comprehensive pet care services tailored to your pet's needs",
-  "heroIsDark": true,
+  "title": "Veterinary services tailored for your pet’s needs",
+  "description": "Explore our range of pet health services, including vaccinations, surgery, and preventative care.",
+  "heroIsDark": false,
   "sections": [
     {
-      "type": "hero",
-      "image": "/assets/hero-banner.jpg",
-      "imageAlt": "Pet Services",
-      "badge": "рџ›Ѓ",
-      "heading": "Our *Services*",
-      "subheading": "Comprehensive care for your beloved pets",
-      "cta": {
-        "label": "Book Now",
+      "type": "hero-centered",
+      "badge": "Pet solutions",
+      "heading": "Veterinary services tailored for your pet’s needs",
+      "subheading": "Explore our range of pet health services, including vaccinations, surgery, and preventative care.",
+      "ctaPrimary": {
+        "label": "Contact us",
         "href": "/contact"
       }
-    },
-    {
-      "type": "services",
-      "heading": "What We *Offer*",
-      "subheading": "Premium services designed for your pet's wellbeing",
-      "items": [
-        {
-          "title": "Professional Grooming",
-          "description": "Full-service grooming including baths, trims, and nail care",
-          "href": "#"
-        },
-        {
-          "title": "Health Checkups",
-          "description": "Regular veterinary exams and vaccinations",
-          "href": "#"
-        },
-        {
-          "title": "Boarding Services",
-          "description": "Comfortable accommodations with 24/7 care",
-          "href": "#"
-        },
-        {
-          "title": "Training Programs",
-          "description": "Behavioral training and socialization",
-          "href": "#"
-        },
-        {
-          "title": "Emergency Care",
-          "description": "Round-the-clock emergency veterinary services",
-          "href": "#"
-        },
-        {
-          "title": "Nutrition Consulting",
-          "description": "Expert dietary advice for optimal pet health",
-          "href": "#"
-        }
-      ]
     }
   ]
 }
