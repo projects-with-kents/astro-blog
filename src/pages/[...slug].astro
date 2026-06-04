@@ -1,20 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageBuilder from '../components/PageBuilder.astro';
-import pagesData from '../data/pages.json';
 
 export async function getStaticPaths() {
-  return pagesData.map((page) => ({
-    params: { slug: page.slug === 'index' ? undefined : page.slug },
-    props: { page },
-  }));
+  const pagesModules = import.meta.glob('../data/pages/*.json', { eager: true });
+  const pagesData = Object.values(pagesModules).map((m: any) => m.default ?? m);
+
+  return pagesData
+    .filter((page: any) => page.slug !== 'index')
+    .map((page: any) => ({
+      params: { slug: page.slug },
+      props: { page },
+    }));
 }
 
-interface Props {
-  page: (typeof pagesData)[number];
-}
-
-const { page } = Astro.props;
+const { page }: { page: any } = Astro.props;
 ---
 
 <Layout 

@@ -1,13 +1,14 @@
 ---
 import Layout      from '../layouts/Layout.astro';
 import PageBuilder from '../components/PageBuilder.astro';
-import pagesData   from '../data/pages.json';
+const pagesModules = import.meta.glob('../data/pages/*.json', { eager: true });
+const pagesData = Object.values(pagesModules).map((m: any) => m.default ?? m);
 
 // Get the index page (homepage)
 const homePage = pagesData.find((p) => p.slug === 'index');
 
 if (!homePage) {
-  throw new Error('Home page not found in pages.json');
+  throw new Error('Home page not found in src/data/pages collection');
 }
 
 const heroIsDark = homePage.sections[0]?.type === 'hero';

@@ -233,10 +233,10 @@ content:
   # ── Pages Collection ────────────────────────────────────
   - name: pages
     label: Pages
-    path: src/data/pages.json
-    type: file
+    path: src/data/pages
+    type: collection
     format: json
-    list: true
+    filename: "{slug}.json"
     fields:
       - { name: id,          label: ID,          type: string }
       - { name: slug,        label: Slug (URL),  type: string }
@@ -245,7 +245,7 @@ content:
       - { name: heroIsDark,  label: "Dark hero navbar", type: boolean }
       - name: sections
         label: Page Sections
-        type: object
+        type: block
         list: true
         blocks:
           # ── Hero block ───────────────────────────────────

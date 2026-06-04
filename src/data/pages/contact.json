@@ -1,0 +1,35 @@
+﻿{
+    "id":  "contact",
+    "slug":  "contact",
+    "title":  "Contact VetCare - Get In Touch",
+    "description":  "Reach out to schedule an appointment or ask questions",
+    "heroIsDark":  false,
+    "sections":  [
+                     {
+                         "type":  "hero",
+                         "image":  "/assets/hero-banner.jpg",
+                         "imageAlt":  "Contact Us",
+                         "badge":  "рџ“ћ",
+                         "heading":  "Get in *Touch*",
+                         "subheading":  "We\u0027d love to hear from you. Contact us today!",
+                         "cta":  {
+                                     "label":  "Schedule Visit",
+                                     "href":  "#contact-form"
+                                 }
+                     },
+                     {
+                         "type":  "cta",
+                         "heading":  "Ready to *Schedule*?",
+                         "body":  "Contact our team to book an appointment or arrange a facility tour. We\u0027re available 7 days a week.",
+                         "ctaPrimary":  {
+                                            "label":  "Email Us",
+                                            "href":  "mailto:hello@vetcare.com"
+                                        },
+                         "ctaSecondary":  {
+                                              "label":  "Call Now",
+                                              "href":  "tel:+1234567890"
+                                          },
+                         "backgroundColor":  "#5C3D1E"
+                     }
+                 ]
+}
