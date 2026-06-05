@@ -24,16 +24,32 @@ Astro сайт с редактированием контента через Key
 
 ## Настройка GitHub режима для Vercel
 
+Теперь режим storage определяется автоматически:
+- если `KEYSTATIC_GITHUB_REPO` пустой -> `local`
+- если `KEYSTATIC_GITHUB_REPO` заполнен -> `github`
+
+Пошагово:
+
 1. Скопируйте `.env.example` в `.env` локально.
-2. Укажите `KEYSTATIC_GITHUB_REPO=owner/repo`.
-3. Откройте `/keystatic`, создайте/подключите GitHub App по инструкции Keystatic.
-4. Добавьте переменные в Vercel Project Settings -> Environment Variables:
+2. Укажите `KEYSTATIC_GITHUB_REPO=owner/repo` (пример: `projects-with-kents/astro-blog`).
+3. Запустите `npm run dev` и откройте `/keystatic`.
+4. На экране Keystatic создайте или подключите GitHub App.
+5. В GitHub App возьмите значения:
+	- `Client ID` -> `KEYSTATIC_GITHUB_CLIENT_ID`
+	- `Client secret` -> `KEYSTATIC_GITHUB_CLIENT_SECRET`
+	- `App slug` -> `PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`
+6. Сгенерируйте `KEYSTATIC_SECRET` (случайная длинная строка 32+ символов).
+7. Добавьте переменные в Vercel Project Settings -> Environment Variables:
 	- `KEYSTATIC_GITHUB_REPO`
 	- `KEYSTATIC_GITHUB_CLIENT_ID`
 	- `KEYSTATIC_GITHUB_CLIENT_SECRET`
 	- `KEYSTATIC_SECRET`
 	- `PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`
-5. Убедитесь, что деплой идет как Astro server output (уже включено в `astro.config.mjs`).
+8. Перезапустите деплой в Vercel.
+9. Проверьте `/keystatic` на прод-домене: редактор должен открываться и сохранять изменения в GitHub.
+
+Опционально:
+- `KEYSTATIC_GITHUB_BRANCH_PREFIX` можно задать для ограничения рабочих веток.
 
 ## Примечание по старой конфигурации
 

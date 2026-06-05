@@ -85,7 +85,22 @@ function tryOrUndefined(fn) {
   }
 }
 
-const storage = { kind: "local" };
+const env = globalThis.process?.env ?? {};
+const githubRepoRaw = env.KEYSTATIC_GITHUB_REPO?.trim();
+const githubBranchPrefix = env.KEYSTATIC_GITHUB_BRANCH_PREFIX?.trim();
+const toRepoConfig = (value) => {
+  if (!value) return void 0;
+  const parts = value.split("/").map((part) => part.trim()).filter(Boolean);
+  if (parts.length !== 2) return void 0;
+  const [owner, name] = parts;
+  return `${owner}/${name}`;
+};
+const githubRepo = toRepoConfig(githubRepoRaw);
+const storage = githubRepo ? {
+  kind: "github",
+  repo: githubRepo,
+  ...githubBranchPrefix ? { branchPrefix: githubBranchPrefix } : {}
+} : { kind: "local" };
 const optionalText = (label, multiline = false, description) => fields.text({
   label,
   multiline,

@@ -1,6 +1,13 @@
 import { collection, config, fields, singleton } from '@keystatic/core';
 
-const storage = { kind: 'local' as const };
+
+const storage = {
+    kind: 'github' as const,
+    repo: {
+        owner: 'projects-with-kents',
+        name: 'astro-blog',
+    }
+} as const;
 
 const optionalText = (label: string, multiline = false, description?: string) =>
   fields.text({
