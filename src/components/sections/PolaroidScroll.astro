@@ -1,0 +1,214 @@
+---
+import Button from '../ui/Button.astro';
+import RichHeading from '../ui/RichHeading.astro';
+
+interface PhotoItem {
+  image: string;
+  imageAlt?: string;
+  note?: string;
+}
+
+interface Props {
+  heading: string;
+  photos: PhotoItem[];
+  body?: string;
+  cta?: { label?: string; href?: string };
+}
+
+const { heading, photos = [], body, cta } = Astro.props;
+const hasCta = Boolean(cta?.label && cta?.href);
+---
+
+{photos.length > 0 && (
+  <section class="polaroid-scroll py-24 lg:py-32 overflow-hidden" data-polaroid-scroll>
+    <div class="container mx-auto px-6 lg:px-10">
+      <div class="max-w-3xl mx-auto text-center mb-6 lg:mb-14">
+        <RichHeading
+          text={heading}
+          as="h2"
+          class="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-[var(--color-foreground)]"
+        />
+      </div>
+
+      <div class="polaroid-stage relative h-[320px] sm:h-[390px] md:h-[520px] max-w-6xl mx-auto">
+        {photos.map((photo, index) => (
+          <figure class="polaroid-card" data-polaroid-index={index}>
+            <div class="polaroid-frame">
+              <img
+                src={photo.image}
+                alt={photo.imageAlt ?? `Photo ${index + 1}`}
+                class="polaroid-image"
+                loading="lazy"
+              />
+            </div>
+            {photo.note && <figcaption class="polaroid-note">{photo.note}</figcaption>}
+          </figure>
+        ))}
+      </div>
+
+      <div class="polaroid-outro max-w-2xl mx-auto text-center mt-10 lg:mt-14">
+        {body && (
+          <p class="text-base md:text-lg leading-relaxed text-[var(--color-muted-foreground)]">
+            {body}
+          </p>
+        )}
+
+        {hasCta && (
+          <div class="mt-8">
+            <Button href={cta!.href!} variant="outline" size="lg">
+              {cta!.label}
+            </Button>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <script>
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const sections = document.querySelectorAll<HTMLElement>('[data-polaroid-scroll]');
+
+      sections.forEach((section) => {
+        if (section.dataset.polaroidReady === 'true') return;
+        section.dataset.polaroidReady = 'true';
+
+        const cards = section.querySelectorAll<HTMLElement>('.polaroid-card');
+        const outro = section.querySelector<HTMLElement>('.polaroid-outro');
+
+        if (!cards.length || !outro) return;
+
+        const isMobile = window.matchMedia('(max-width: 767px)').matches;
+        const total = cards.length;
+        const spread = isMobile
+          ? Math.max(210, Math.min(420, 160 + total * 70))
+          : Math.max(360, Math.min(760, 220 + total * 110));
+
+        const randomBetween = (min: number, max: number) => min + Math.random() * (max - min);
+        const cardMotion = Array.from(cards).map(() => ({
+          startRotate: randomBetween(-7, 7),
+          endRotateOffset: randomBetween(-5, 5),
+        }));
+
+        const getCardTarget = (index: number) => {
+          const denominator = Math.max(total - 1, 1);
+          const ratio = index / denominator;
+          const centered = ratio - 0.5;
+          const x = centered * spread;
+          const ySpread = isMobile ? 18 : 90;
+          const yBase = isMobile ? 0 : -10;
+          const y = Math.abs(centered) * ySpread + yBase;
+          const rotateBase = isMobile ? centered * 20 : centered * 30;
+          const rotate = rotateBase + cardMotion[index].endRotateOffset;
+          return { x, y, rotate };
+        };
+
+        gsap.set(cards, {
+          x: 0,
+          y: 0,
+          rotate: (i: number) => cardMotion[i].startRotate,
+          transformOrigin: 'center center',
+        });
+
+        gsap.set(outro, { opacity: 0, y: 28 });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: '+=180%',
+            scrub: 0.85,
+            pin: true,
+            pinSpacing: true,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        tl.to(cards, {
+          x: (_: number, el: HTMLElement) => {
+            const idx = Number(el.getAttribute('data-polaroid-index') || '0');
+            return getCardTarget(idx).x;
+          },
+          y: (_: number, el: HTMLElement) => {
+            const idx = Number(el.getAttribute('data-polaroid-index') || '0');
+            return getCardTarget(idx).y;
+          },
+          rotate: (_: number, el: HTMLElement) => {
+            const idx = Number(el.getAttribute('data-polaroid-index') || '0');
+            return getCardTarget(idx).rotate;
+          },
+          ease: 'none',
+          stagger: 0.04,
+        }, 0)
+        .to(outro, {
+          opacity: 1,
+          y: 0,
+          ease: 'power2.out',
+          duration: 0.25,
+        }, 0.62);
+      });
+
+      ScrollTrigger.refresh();
+    </script>
+  </section>
+)}
+
+<style>
+  .polaroid-stage {
+    perspective: 1000px;
+  }
+
+  .polaroid-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: clamp(170px, 19vw, 280px);
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 10px 14px rgba(17, 16, 14, 0.11));
+    will-change: transform;
+  }
+
+  .polaroid-frame {
+    background: #fff;
+    border: 1px solid #ece5d9;
+    padding: 0.5rem 0.5rem 2.8rem;
+    border-radius: 2px;
+  }
+
+  .polaroid-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 1px;
+  }
+
+  .polaroid-note {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.75rem;
+    text-align: center;
+    font-family: 'Caveat', 'Comic Sans MS', cursive;
+    font-size: clamp(1.15rem, 1.5vw, 1.55rem);
+    line-height: 1;
+    color: #302923;
+    pointer-events: none;
+  }
+
+  .polaroid-outro {
+    will-change: transform, opacity;
+  }
+
+  @media (max-width: 767px) {
+    .polaroid-stage {
+      height: 320px;
+    }
+
+    .polaroid-card {
+      width: min(56vw, 230px);
+    }
+  }
+</style>

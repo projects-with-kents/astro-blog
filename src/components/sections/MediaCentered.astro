@@ -20,9 +20,9 @@ const {
 const isVideo = kind === 'video' && !!videoSrc;
 ---
 
-<section class="py-16 lg:py-24">
+<section class="py-16 lg:py-24" data-reveal-root>
   <div class="container mx-auto px-6 lg:px-10">
-    <div class="rounded-3xl overflow-hidden border border-border bg-muted">
+    <div class="reveal-item rounded-3xl overflow-hidden border border-border bg-muted">
       {isVideo ? (
         <video
           src={videoSrc}
@@ -42,7 +42,7 @@ const isVideo = kind === 'video' && !!videoSrc;
     </div>
 
     {caption && (
-      <p class="text-sm text-muted-foreground mt-4 text-center max-w-3xl mx-auto">
+      <p class="reveal-item text-sm text-muted-foreground mt-4 text-center max-w-3xl mx-auto">
         {caption}
       </p>
     )}

@@ -19,28 +19,28 @@ const {
 } = Astro.props;
 ---
 
-<section class="py-16 lg:py-24">
+<section class="py-16 lg:py-24" data-reveal-root>
   <div class="container mx-auto px-6 lg:px-10">
-    <div class="rounded-3xl overflow-hidden border border-border bg-[color:color-mix(in_srgb,var(--color-secondary)_40%,white)] grid lg:grid-cols-2 items-stretch">
+    <div class="rounded-3xl overflow-hidden border border-border bg-[color-mix(in_srgb,var(--color-secondary)_40%,white)] grid lg:grid-cols-2 items-stretch">
       <div class="p-8 lg:p-12 flex flex-col justify-center">
         <RichHeading
           text={heading}
           as="h2"
-          class="font-serif text-3xl lg:text-5xl font-semibold leading-tight mb-5"
+          class="reveal-item font-serif text-3xl lg:text-5xl font-semibold leading-tight mb-5"
         />
 
         {body && (
-          <p class="text-base lg:text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
+          <p class="reveal-item text-base lg:text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
             {body}
           </p>
         )}
 
-        <div>
+        <div class="reveal-item">
           <Button href={cta.href} size="lg">{cta.label}</Button>
         </div>
       </div>
 
-      <div class="min-h-[320px] lg:min-h-[100%]">
+      <div class="reveal-item min-h-80 lg:min-h-full">
         <img
           src={image}
           alt={imageAlt}

@@ -1,43 +1,40 @@
-# Astro Starter Kit: Minimal
+# AstroVeb
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Astro сайт с редактированием контента через Keystatic (замена PagesCMS).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Основные команды
 
-## 🚀 Project Structure
+- `npm install` — установить зависимости
+- `npm run dev` — локальная разработка (`http://127.0.0.1:4321`)
+- `npm run build` — прод-сборка
+- `npm run preview` — локальный просмотр сборки
 
-Inside of your Astro project, you'll see the following folders and files:
+## CMS (Keystatic)
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- Админка доступна по маршруту `http://127.0.0.1:4321/keystatic`
+- В локальном режиме (`local`) контент пишется напрямую в файлы проекта
+- В GitHub-режиме (`github`) контент редактируется прямо в репозитории и подходит для Vercel
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### Где лежит схема
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- `keystatic.config.ts` — полная схема контента
+- `src/data/*.json` — глобальные данные
+- `src/data/pages/*.json` — страницы
+- `src/content/blog/*.md` — посты блога
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Настройка GitHub режима для Vercel
 
-## 🧞 Commands
+1. Скопируйте `.env.example` в `.env` локально.
+2. Укажите `KEYSTATIC_GITHUB_REPO=owner/repo`.
+3. Откройте `/keystatic`, создайте/подключите GitHub App по инструкции Keystatic.
+4. Добавьте переменные в Vercel Project Settings -> Environment Variables:
+	- `KEYSTATIC_GITHUB_REPO`
+	- `KEYSTATIC_GITHUB_CLIENT_ID`
+	- `KEYSTATIC_GITHUB_CLIENT_SECRET`
+	- `KEYSTATIC_SECRET`
+	- `PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`
+5. Убедитесь, что деплой идет как Astro server output (уже включено в `astro.config.mjs`).
 
-All commands are run from the root of the project, from a terminal:
+## Примечание по старой конфигурации
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Файл `.pages.yml` оставлен в репозитории как справочный, но больше не используется приложением.

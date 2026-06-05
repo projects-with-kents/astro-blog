@@ -18,24 +18,24 @@ const {
 } = Astro.props;
 ---
 
-<section id="contact-form" class="py-24 lg:py-28">
+<section id="contact-form" class="py-24 lg:py-28" data-reveal-root>
   <div class="container mx-auto px-6 lg:px-10">
     <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start">
       <div>
-        <div class="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-sm text-muted-foreground mb-5">
+        <div class="reveal-item inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-sm text-muted-foreground mb-5">
           <span class="w-2 h-2 rounded-full bg-accent"></span>
           Free form submission via Google Forms
         </div>
-        <h2 class="font-serif text-3xl lg:text-4xl font-bold leading-tight mb-4">
+        <h2 class="reveal-item font-serif text-3xl lg:text-4xl font-bold leading-tight mb-4">
           {heading}
         </h2>
         {body && (
-          <p class="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl mb-8">
+          <p class="reveal-item text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl mb-8">
             {body}
           </p>
         )}
 
-        <div class="grid sm:grid-cols-3 gap-4 mb-10">
+        <div class="reveal-item grid sm:grid-cols-3 gap-4 mb-10">
           <div class="rounded-2xl border border-border bg-white p-4">
             <p class="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">1. Send</p>
             <p class="text-sm leading-relaxed">Visitors submit their request from your site.</p>
@@ -50,12 +50,12 @@ const {
           </div>
         </div>
 
-        <p class="text-sm text-muted-foreground">
+        <p class="reveal-item text-sm text-muted-foreground">
           {note}
         </p>
       </div>
 
-      <div class="rounded-4xl border border-border bg-white p-6 lg:p-8 shadow-[0_20px_60px_rgba(28,22,16,0.08)]">
+      <div class="reveal-item rounded-4xl border border-border bg-white p-6 lg:p-8 shadow-[0_20px_60px_rgba(28,22,16,0.08)]">
         <form
           action={endpointUrl}
           method="POST"

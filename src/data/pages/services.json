@@ -6,110 +6,126 @@
   "heroIsDark": false,
   "sections": [
     {
-      "type": "hero-centered",
-      "badge": "Pet solutions",
-      "heading": "Veterinary services *tailored for* your pet’s needs",
-      "subheading": "Explore our range of pet health services, including vaccinations, surgery, and preventative care.",
-      "ctaPrimary": {
-        "label": "Contact us",
-        "href": "/contact"
-      }
-    },
-    {
-      "type": "services",
-      "heading": "Health and wellness from nose to tail",
-      "subheading": "Comprehensive care designed for every stage of your pet's life because they deserve nothing but the best.",
-      "items": [
-        {
-          "title": "Schedule your visit for a comprehensive assessment",
-          "description": "Book an appointment to discuss your pet's health and wellness."
-        },
-        {
-          "title": "Visit your veterinarian for tailored care for your pet.",
-          "description": "We prioritize your pet's health through our comprehensive care approach."
-        },
-        {
-          "title": "Cancel with our various payment methods.",
-          "description": "Payment Methods for Pet Health and Wellbeing Consultation."
+      "discriminant": "hero-centered",
+      "value": {
+        "badge": "Pet solutions",
+        "heading": "Veterinary services *tailored for* your pet’s needs",
+        "subheading": "Explore our range of pet health services, including vaccinations, surgery, and preventative care.",
+        "ctaPrimary": {
+          "label": "Contact us",
+          "href": "/contact"
         }
-      ]
-    },
-    {
-      "type": "feature",
-      "layout": "image-left",
-      "image": "/assets/677d860a3251c0fd985be4ae_Frame 2147226731-p-800.webp",
-      "imageAlt": "Preventative care",
-      "heading": "*Preventative* care",
-      "body": "Our preventative care services ensure your pet stays healthy and happy. Regular check-ups and vaccinations are key to preventing illness.",
-      "ctaPrimary": {
-        "label": "Learn More",
-        "href": "/services/preventative_care"
       }
     },
     {
-      "type": "feature",
-      "layout": "image-right",
-      "image": "/assets/677d8612f10da56c5b23c7ea_Frame 2147226732-p-800.webp",
-      "imageAlt": "Essential vaccinations",
-      "heading": "*Essential* vaccinations",
-      "body": "Vaccinations are crucial for your pet's health and well-being. Our expert veterinarians provide comprehensive vaccination services to keep your furry friends safe.",
-      "ctaPrimary": {
-        "label": "Learn More",
-        "href": "/services/vaccinations"
+      "discriminant": "services",
+      "value": {
+        "heading": "Health and wellness from nose to tail",
+        "subheading": "Comprehensive care designed for every stage of your pet's life because they deserve nothing but the best.",
+        "items": [
+          {
+            "title": "Schedule your visit for a comprehensive assessment",
+            "description": "Book an appointment to discuss your pet's health and wellness."
+          },
+          {
+            "title": "Visit your veterinarian for tailored care for your pet.",
+            "description": "We prioritize your pet's health through our comprehensive care approach."
+          },
+          {
+            "title": "Cancel with our various payment methods.",
+            "description": "Payment Methods for Pet Health and Wellbeing Consultation."
+          }
+        ]
       }
     },
     {
-      "type": "feature",
-      "layout": "image-left",
-      "image": "/assets/677d8618502b600bd569896e_Frame 2147226733-p-800.webp",
-      "imageAlt": "Surgical care",
-      "heading": "*Surgical* care",
-      "body": "Our surgical services are designed to ensure your pet receives the highest level of care. From routine procedures to complex surgeries.",
-      "ctaPrimary": {
-        "label": "Learn More",
-        "href": "/services/surgion "
-      }
-    },
-    {
-      "type": "feature",
-      "layout": "image-right",
-      "image": "/assets/677d861fc43d70104f8b9cd4_Frame 2147226734-p-800.webp",
-      "imageAlt": "*Grooming* service",
-      "heading": "Grooming service",
-      "body": "Our pet grooming and bathing services ensure your furry friend looks and feels their best. With a focus on comfort and cleanliness, we provide a relaxing experience for both pets and owners.",
-      "ctaPrimary": {
-        "label": "Learn More",
-        "href": "/services/grooming"
-      }
-    },
-    {
-      "type": "stats-text",
-      "heading": "*Our Impact* in Numbers",
-      "body": "We’re proud of the difference we’ve made in the lives of pets and their owners. With thousands of happy pets served, a dedicated team of expert caretakers, and countless hours of care and training, we’re committed to providing exceptional service that pets love and owners trust.",
-      "stats": [
-        {
-          "value": "10,000+",
-          "label": "Happy Pets Served"
-        },
-        {
-          "value": "500+",
-          "label": "5-Star Reviews"
-        },
-        {
-          "value": "95%",
-          "label": "Customer Satisfaction"
+      "discriminant": "feature",
+      "value": {
+        "layout": "image-left",
+        "image": "/assets/677d860a3251c0fd985be4ae_Frame 2147226731-p-800.webp",
+        "imageAlt": "Preventative care",
+        "heading": "*Preventative* care",
+        "body": "Our preventative care services ensure your pet stays healthy and happy. Regular check-ups and vaccinations are key to preventing illness.",
+        "ctaPrimary": {
+          "label": "Learn More",
+          "href": "/services/preventative_care"
         }
-      ]
+      }
     },
     {
-      "type": "light-cta-photo",
-      "heading": "Join Our *Pet Care Family!*",
-      "body": "Join our pet care family and receive expert tips, exclusive offers, and updates to keep your furry friends happy and healthy",
-      "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
-      "imageAlt": "Join Our Pet Care Family!",
-      "cta": {
-        "label": "Contact Us",
-        "href": "/contact"
+      "discriminant": "feature",
+      "value": {
+        "layout": "image-right",
+        "image": "/assets/677d8612f10da56c5b23c7ea_Frame 2147226732-p-800.webp",
+        "imageAlt": "Essential vaccinations",
+        "heading": "*Essential* vaccinations",
+        "body": "Vaccinations are crucial for your pet's health and well-being. Our expert veterinarians provide comprehensive vaccination services to keep your furry friends safe.",
+        "ctaPrimary": {
+          "label": "Learn More",
+          "href": "/services/vaccinations"
+        }
+      }
+    },
+    {
+      "discriminant": "feature",
+      "value": {
+        "layout": "image-left",
+        "image": "/assets/677d8618502b600bd569896e_Frame 2147226733-p-800.webp",
+        "imageAlt": "Surgical care",
+        "heading": "*Surgical* care",
+        "body": "Our surgical services are designed to ensure your pet receives the highest level of care. From routine procedures to complex surgeries.",
+        "ctaPrimary": {
+          "label": "Learn More",
+          "href": "/services/surgion "
+        }
+      }
+    },
+    {
+      "discriminant": "feature",
+      "value": {
+        "layout": "image-right",
+        "image": "/assets/677d861fc43d70104f8b9cd4_Frame 2147226734-p-800.webp",
+        "imageAlt": "*Grooming* service",
+        "heading": "Grooming service",
+        "body": "Our pet grooming and bathing services ensure your furry friend looks and feels their best. With a focus on comfort and cleanliness, we provide a relaxing experience for both pets and owners.",
+        "ctaPrimary": {
+          "label": "Learn More",
+          "href": "/services/grooming"
+        }
+      }
+    },
+    {
+      "discriminant": "stats-text",
+      "value": {
+        "heading": "*Our Impact* in Numbers",
+        "body": "We’re proud of the difference we’ve made in the lives of pets and their owners. With thousands of happy pets served, a dedicated team of expert caretakers, and countless hours of care and training, we’re committed to providing exceptional service that pets love and owners trust.",
+        "stats": [
+          {
+            "value": "10,000+",
+            "label": "Happy Pets Served"
+          },
+          {
+            "value": "500+",
+            "label": "5-Star Reviews"
+          },
+          {
+            "value": "95%",
+            "label": "Customer Satisfaction"
+          }
+        ]
+      }
+    },
+    {
+      "discriminant": "light-cta-photo",
+      "value": {
+        "heading": "Join Our *Pet Care Family!*",
+        "body": "Join our pet care family and receive expert tips, exclusive offers, and updates to keep your furry friends happy and healthy",
+        "image": "/assets/karsten-winegeart-uy5l-VJ8dRM-unsplash.jpg",
+        "imageAlt": "Join Our Pet Care Family!",
+        "cta": {
+          "label": "Contact Us",
+          "href": "/contact"
+        }
       }
     }
   ]

@@ -55,7 +55,7 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
@@ -64,5 +64,19 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .reveal-item {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition: opacity 560ms ease, transform 560ms ease;
+    will-change: opacity, transform;
+  }
+
+  .reveal-item.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }

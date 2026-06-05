@@ -2,14 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import PageBuilder from '../components/PageBuilder.astro';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const pagesModules = import.meta.glob('../data/pages/*.json', { eager: true });
   const pagesData = Object.values(pagesModules).map((m: any) => m.default ?? m);
 
   return pagesData
-    .filter((page: any) => page.slug !== 'index')
+    .filter((page: any) => (page.slug ?? page.id) !== 'index')
     .map((page: any) => ({
-      params: { slug: page.slug },
+      params: { slug: page.slug ?? page.id },
       props: { page },
     }));
 }

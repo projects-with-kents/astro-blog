@@ -36,7 +36,7 @@ const isImageRight = effectiveLayout === 'image-right';
 const isNoImage = effectiveLayout === 'no-image';
 ---
 
-<section class="bg-white py-24">
+<section class="bg-white py-24" data-reveal-root>
   <div class="container mx-auto px-6 lg:px-10">
     <div class:list={[
       'grid gap-10 lg:gap-16 items-center',
@@ -44,13 +44,14 @@ const isNoImage = effectiveLayout === 'no-image';
     ]}>
       {!isNoImage && (
         <div class:list={[
-          'rounded-3xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-muted)]',
+          'rounded-3xl overflow-hidden border border-(--color-border) bg-muted',
+          'reveal-item',
           isImageRight ? 'lg:order-2' : 'lg:order-1',
         ]}>
           <img
             src={image}
             alt={imageAlt}
-            class="w-full h-[360px] md:h-[460px] object-cover"
+            class="w-full h-90 md:h-115 object-cover"
             loading="lazy"
           />
         </div>
@@ -62,11 +63,11 @@ const isNoImage = effectiveLayout === 'no-image';
         <RichHeading
           text={heading}
           as="h2"
-          class="font-serif text-4xl lg:text-6xl font-bold text-[var(--color-foreground)] leading-[1.08] mb-6"
+          class="reveal-item font-serif text-4xl lg:text-6xl font-bold text-(--color-foreground) leading-[1.08] mb-6"
         />
 
         <p class:list={[
-          'text-[var(--color-muted-foreground)] text-base lg:text-lg leading-relaxed mb-8',
+          'reveal-item text-muted-foreground text-base lg:text-lg leading-relaxed mb-8',
           isNoImage ? 'mx-auto max-w-2xl' : 'max-w-xl',
         ]}>
           {body}
@@ -78,9 +79,9 @@ const isNoImage = effectiveLayout === 'no-image';
             isNoImage ? 'sm:grid-cols-2 text-left max-w-3xl mx-auto' : 'sm:grid-cols-2',
           ]}>
             {features.map((item) => (
-              <li class="flex items-center gap-3 text-[var(--color-foreground)] text-lg">
+              <li class="reveal-item flex items-center gap-3 text-(--color-foreground) text-lg">
                 {item.bulletIcon && (
-                  <span class="w-7 h-7 rounded-full bg-[var(--color-secondary)]/55 border border-[var(--color-border)] flex items-center justify-center shrink-0">
+                  <span class="w-7 h-7 rounded-full bg-secondary/55 border border-(--color-border) flex items-center justify-center shrink-0">
                     <img src={item.bulletIcon} alt="" aria-hidden="true" class="w-3 h-3 object-contain" loading="lazy" />
                   </span>
                 )}
@@ -90,18 +91,18 @@ const isNoImage = effectiveLayout === 'no-image';
           </ul>
         )}
 
-        {(ctaPrimary || ctaSecondary) && (
+        {(ctaPrimary?.label || ctaSecondary?.label) && (
           <div class:list={[
-            'flex flex-wrap gap-3',
+            'reveal-item flex flex-wrap gap-3',
             isNoImage ? 'justify-center' : 'justify-start',
           ]}>
-            {ctaPrimary && (
+            {ctaPrimary?.label && (
               <Button href={ctaPrimary.href} size="lg" class="min-w-40">
                 {ctaPrimary.label}
               </Button>
             )}
-            {ctaSecondary && (
-              <Button href={ctaSecondary.href} variant="outline" size="lg" class="min-w-40 text-[var(--color-foreground)] border-[var(--color-border)] hover:bg-[var(--color-muted)]">
+            {ctaSecondary?.label && (
+              <Button href={ctaSecondary.href} variant="outline" size="lg" class="min-w-40 text-(--color-foreground) border-(--color-border) hover:bg-muted">
                 {ctaSecondary.label}
               </Button>
             )}

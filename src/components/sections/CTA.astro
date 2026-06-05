@@ -19,7 +19,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="py-10 md:py-16">
+<section class="py-10 md:py-16" data-reveal-root>
   <div 
     class="container mx-auto px-6 lg:px-10 py-20 md:py-32 rounded-3xl text-white"
     style={`background-color: ${backgroundColor}`}
@@ -28,16 +28,16 @@ const {
       <RichHeading
         text={heading}
         as="h2"
-        class="font-serif text-4xl lg:text-5xl font-bold leading-tight mb-5"
+        class="reveal-item font-serif text-4xl lg:text-5xl font-bold leading-tight mb-5"
       />
       
-      <p class="text-base lg:text-lg leading-relaxed mb-8 opacity-90">
+      <p class="reveal-item text-base lg:text-lg leading-relaxed mb-8 opacity-90">
         {body}
       </p>
 
-      {(ctaPrimary || ctaSecondary) && (
-        <div class="flex flex-wrap gap-4">
-          {ctaPrimary && (
+      {(ctaPrimary?.label || ctaSecondary?.label) && (
+        <div class="reveal-item flex flex-wrap gap-4">
+          {ctaPrimary?.label && (
             <Button
               variant="hero"
               size="md"
@@ -46,7 +46,7 @@ const {
               {ctaPrimary.label}
             </Button>
           )}
-          {ctaSecondary && (
+          {ctaSecondary?.label && (
             <Button
               variant="hero"
               size="md"
@@ -60,3 +60,4 @@ const {
     </div>
   </div>
 </section>
+

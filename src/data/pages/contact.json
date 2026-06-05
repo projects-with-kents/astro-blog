@@ -1,42 +1,46 @@
 {
   "id": "contact",
-  "slug": "contact",
   "title": "Contact VetCare - Get In Touch",
   "description": "Reach out to schedule an appointment or ask questions",
   "heroIsDark": false,
   "sections": [
     {
-      "type": "hero",
-      "image": "/assets/hero-banner.jpg",
-      "imageAlt": "Contact Us",
-      "badge": "📞",
-      "heading": "Get in *Touch*",
-      "subheading": "We'd love to hear from you. Contact us today!",
-      "cta": {
-        "label": "Schedule Visit",
-        "href": "#contact-form"
+      "discriminant": "hero",
+      "value": {
+        "image": "/assets/contact/sections/0/value/image.jpg",
+        "imageAlt": "Contact Us",
+        "heading": "Get in *Touch*",
+        "subheading": "We'd love to hear from you. Contact us today!",
+        "cta": {
+          "label": "Schedule Visit",
+          "href": "#contact-form"
+        }
       }
     },
     {
-      "type": "contact-form",
-      "heading": "Send us your request",
-      "body": "Use the form below to send enquiries, booking requests, or any other questions. Submissions are forwarded by Apps Script into Google Forms.",
-      "endpointUrl": "https://script.google.com/macros/s/AKfycby4xtkWdAPuUFLeanpjVV0oGfrrvQ5SoDSZysrZ2wfSHn8M5voZBJvtOQGTkhCFbjM4/exec",
-      "submitLabel": "Send request"
+      "discriminant": "contact-form",
+      "value": {
+        "heading": "Send us your request",
+        "body": "Use the form below to send enquiries, booking requests, or any other questions. Submissions are forwarded by Apps Script into Google Forms.",
+        "endpointUrl": "https://script.google.com/macros/s/AKfycby4xtkWdAPuUFLeanpjVV0oGfrrvQ5SoDSZysrZ2wfSHn8M5voZBJvtOQGTkhCFbjM4/exec",
+        "submitLabel": "Send request"
+      }
     },
     {
-      "type": "cta",
-      "heading": "Ready to *Schedule*?",
-      "body": "Contact our team to book an appointment or arrange a facility tour. We're available 7 days a week.",
-      "ctaPrimary": {
-        "label": "Email Us",
-        "href": "mailto:hello@vetcare.com"
-      },
-      "ctaSecondary": {
-        "label": "Call Now",
-        "href": "tel:+1234567890"
-      },
-      "backgroundColor": "#5C3D1E"
+      "discriminant": "cta",
+      "value": {
+        "heading": "Ready to *Schedule*?",
+        "body": "Contact our team to book an appointment or arrange a facility tour. We're available 7 days a week.",
+        "ctaPrimary": {
+          "label": "Email Us",
+          "href": "mailto:hello@vetcare.com"
+        },
+        "ctaSecondary": {
+          "label": "Call Now",
+          "href": "tel:+1234567890"
+        },
+        "backgroundColor": "#5C3D1E"
+      }
     }
   ]
 }

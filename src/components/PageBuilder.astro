@@ -25,6 +25,7 @@ import Gallery from './sections/Gallery.astro';
 import StatsText from './sections/StatsText.astro';
 import LightCTAWithPhoto from './sections/LightCTAWithPhoto.astro';
 import MarkdownContent from './sections/MarkdownContent.astro';
+import PolaroidScroll from './sections/PolaroidScroll.astro';
 
 type HeroBlock = {
   type: 'hero';
@@ -183,16 +184,54 @@ type MarkdownContentBlock = {
   markdown: string;
 };
 
-type Block = HeroBlock | ServicesBlock | FeatureBlock | TestimonialsBlock | CTABlock | FAQBlock | InsiderHeroBlock | ContactFormBlock | HeroCenteredBlock | MediaCenteredBlock | GalleryBlock | StatsTextBlock | LightCTAWithPhotoBlock | MarkdownContentBlock;
+type PolaroidPhotoItem = {
+  image: string;
+  imageAlt?: string;
+  note?: string;
+};
+
+type PolaroidScrollBlock = {
+  type: 'polaroid-scroll';
+  heading: string;
+  photos: PolaroidPhotoItem[];
+  body?: string;
+  cta?: { label?: string; href?: string };
+};
+
+type Block = HeroBlock | ServicesBlock | FeatureBlock | TestimonialsBlock | CTABlock | FAQBlock | InsiderHeroBlock | ContactFormBlock | HeroCenteredBlock | MediaCenteredBlock | GalleryBlock | StatsTextBlock | LightCTAWithPhotoBlock | MarkdownContentBlock | PolaroidScrollBlock;
 
 interface Props {
   sections: Block[];
 }
 
 const { sections } = Astro.props;
+
+type LegacyBlock = Block;
+type KeystaticBlock = { discriminant: string; value: Record<string, unknown> };
+
+function normalizeBlock(raw: LegacyBlock | KeystaticBlock | null | undefined): Block | null {
+  if (!raw || typeof raw !== 'object') return null;
+
+  if ('type' in raw) {
+    return raw as Block;
+  }
+
+  if ('discriminant' in raw && 'value' in raw) {
+    const ks = raw as KeystaticBlock;
+    return {
+      type: ks.discriminant,
+      ...(ks.value ?? {}),
+    } as Block;
+  }
+
+  return null;
+}
 ---
 
-{sections.map((block) => {
+{sections.map((rawBlock) => {
+  const block = normalizeBlock(rawBlock as LegacyBlock | KeystaticBlock);
+  if (!block) return null;
+
   switch (block.type) {
     case 'hero':
       return (
@@ -338,6 +377,16 @@ const { sections } = Astro.props;
         <MarkdownContent
           heading={block.heading}
           markdown={block.markdown}
+        />
+      );
+
+    case 'polaroid-scroll':
+      return (
+        <PolaroidScroll
+          heading={block.heading}
+          photos={block.photos}
+          body={block.body}
+          cta={block.cta}
         />
       );
 

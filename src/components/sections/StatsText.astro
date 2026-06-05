@@ -24,19 +24,19 @@ const {
 } = Astro.props;
 ---
 
-<section class="py-20 lg:py-28 bg-[color:color-mix(in_srgb,var(--color-secondary)_38%,white)]">
+<section class="py-20 lg:py-28 bg-[color-mix(in_srgb,var(--color-secondary)_38%,white)]" data-reveal-root>
   <div class="container mx-auto px-6 lg:px-10">
     <div class="grid lg:grid-cols-2 gap-12 items-start mb-12">
       <RichHeading
         text={heading}
         as="h2"
-        class="font-serif text-3xl lg:text-5xl font-semibold leading-tight mb-5"
+        class="reveal-item font-serif text-3xl lg:text-5xl font-semibold leading-tight mb-5"
     />
 
       <div>
-        {body && <p class="text-base lg:text-lg text-muted-foreground leading-relaxed mb-8">{body}</p>}
+        {body && <p class="reveal-item text-base lg:text-lg text-muted-foreground leading-relaxed mb-8">{body}</p>}
         {(ctaPrimary || ctaSecondary) && (
-          <div class="flex flex-wrap gap-3">
+          <div class="reveal-item flex flex-wrap gap-3">
             {ctaPrimary && <Button href={ctaPrimary.href} size="lg">{ctaPrimary.label}</Button>}
             {ctaSecondary && (
               <Button href={ctaSecondary.href} variant="outline" size="lg" class="text-foreground border-foreground/30 hover:bg-white/70">
@@ -51,7 +51,7 @@ const {
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 border-y border-accent/45">
       {stats.map((item: StatItem, index: number) => (
         <div class:list={[
-          'py-7 px-4 lg:px-6',
+          'reveal-item py-7 px-4 lg:px-6',
           index !== 0 ? 'border-l border-accent/45' : '',
         ]}>
           <p class="text-4xl lg:text-6xl font-semibold tracking-tight mb-2">{item.value}</p>

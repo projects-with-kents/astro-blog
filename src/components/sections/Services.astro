@@ -18,7 +18,7 @@ interface Props {
 const { heading, subheading, items } = Astro.props;
 ---
 
-<section class="bg-white py-24">
+<section class="bg-white py-24" data-reveal-root>
   <div class="container mx-auto px-6 lg:px-10">
 
     <!-- Section header -->
@@ -26,9 +26,9 @@ const { heading, subheading, items } = Astro.props;
       <RichHeading
         text={heading}
         as="h2"
-        class="font-serif text-4xl lg:text-5xl font-bold text-[var(--color-foreground)] leading-tight mb-4"
+        class="reveal-item font-serif text-4xl lg:text-5xl font-bold text-(--color-foreground) leading-tight mb-4"
       />
-      <p class="text-[var(--color-muted-foreground)] text-base lg:text-lg leading-relaxed">
+      <p class="reveal-item text-muted-foreground text-base lg:text-lg leading-relaxed">
         {subheading}
       </p>
     </div>
@@ -36,12 +36,14 @@ const { heading, subheading, items } = Astro.props;
     <!-- Services grid — auto-fills rows, supports any number of cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {items.map((item) => (
-        <ServiceCard
-          icon={item.icon}
-          title={item.title}
-          description={item.description}
-          href={item.href}
-        />
+        <div class="reveal-item">
+          <ServiceCard
+            icon={item.icon}
+            title={item.title}
+            description={item.description}
+            href={item.href}
+          />
+        </div>
       ))}
     </div>
 

@@ -17,7 +17,7 @@ interface Props {
 const { heading, body, faqs = [], cta } = Astro.props;
 ---
 
-<section class="bg-[var(--color-background)] py-20 md:py-32">
+<section class="bg-(--color-background) py-20 md:py-32" data-reveal-root>
   <div class="container mx-auto px-6 lg:px-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
       <!-- Left side: Heading & Description -->
@@ -25,17 +25,17 @@ const { heading, body, faqs = [], cta } = Astro.props;
         <RichHeading
           text={heading}
           as="h2"
-          class="font-serif text-4xl lg:text-5xl font-bold text-[var(--color-foreground)] leading-tight mb-4"
+          class="reveal-item font-serif text-4xl lg:text-5xl font-bold text-(--color-foreground) leading-tight mb-4"
         />
         
         {body && (
-          <p class="text-[var(--color-muted-foreground)] text-base leading-relaxed mb-8">
+          <p class="reveal-item text-muted-foreground text-base leading-relaxed mb-8">
             {body}
           </p>
         )}
 
-        {cta && (
-          <div class="mt-auto pt-4">
+        {cta?.label && (
+          <div class="reveal-item mt-auto pt-4">
             <Button
               variant="default"
               size="md"
@@ -51,18 +51,18 @@ const { heading, body, faqs = [], cta } = Astro.props;
       <div class="space-y-3">
         {faqs.map((faq, idx) => (
           <div 
-            class="faq-item border border-[var(--color-border)] rounded-2xl overflow-hidden bg-white"
+            class="reveal-item faq-item border border-(--color-border) rounded-2xl overflow-hidden bg-white"
           >
             <button
-              class="faq-trigger w-full px-6 py-4 md:px-8 md:py-5 flex items-center justify-between hover:bg-[var(--color-secondary)]/10 transition-colors text-left"
+              class="faq-trigger w-full px-6 py-4 md:px-8 md:py-5 flex items-center justify-between hover:bg-secondary/10 transition-colors text-left"
               aria-expanded="false"
               aria-controls={`faq-answer-${idx}`}
               data-index={idx}
             >
-              <span class="font-medium text-[var(--color-foreground)] pr-4">
+              <span class="font-medium text-(--color-foreground) pr-4">
                 {idx + 1}. {faq.question}
               </span>
-              <span class="faq-icon flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-[var(--color-foreground)] text-white">
+              <span class="faq-icon shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-(--color-foreground) text-white">
                 <svg class="w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="12" cy="12" r="1" />
                   <circle cx="19" cy="12" r="1" />
@@ -73,9 +73,9 @@ const { heading, body, faqs = [], cta } = Astro.props;
 
             <div
               id={`faq-answer-${idx}`}
-              class="faq-answer hidden overflow-hidden max-h-0 transition-all duration-300 ease-out bg-[var(--color-secondary)]/5 border-t border-[var(--color-border)]"
+              class="faq-answer hidden overflow-hidden max-h-0 transition-all duration-300 ease-out bg-secondary/5 border-t border-(--color-border)"
             >
-              <p class="px-6 py-4 md:px-8 md:py-5 text-[var(--color-muted-foreground)] text-base leading-relaxed">
+              <p class="px-6 py-4 md:px-8 md:py-5 text-muted-foreground text-base leading-relaxed">
                 {faq.answer}
               </p>
             </div>
@@ -86,39 +86,48 @@ const { heading, body, faqs = [], cta } = Astro.props;
   </div>
 
   <script>
-    const triggers = document.querySelectorAll('.faq-trigger') as NodeListOf<HTMLButtonElement>;
+    const roots = document.querySelectorAll<HTMLElement>('[data-reveal-root]');
 
-    triggers.forEach((trigger) => {
-      trigger.addEventListener('click', () => {
-        const index = trigger.getAttribute('data-index');
-        const answer = document.getElementById(`faq-answer-${index}`) as HTMLElement | null;
-        const isOpen = answer?.classList.contains('hidden') === false;
+    roots.forEach((root) => {
+      const triggers = root.querySelectorAll<HTMLButtonElement>('.faq-trigger');
 
-        // Close all others
-        triggers.forEach((t) => {
-          if (t !== trigger) {
-            const idx = t.getAttribute('data-index');
-            const ans = document.getElementById(`faq-answer-${idx}`) as HTMLElement | null;
-            if (ans && !ans.classList.contains('hidden')) {
-              ans.classList.add('hidden');
-              ans.style.maxHeight = '0';
-              t.setAttribute('aria-expanded', 'false');
+      if (!triggers.length) return;
+
+      if (root.dataset.faqReady === 'true') return;
+      root.dataset.faqReady = 'true';
+
+      triggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const index = trigger.getAttribute('data-index');
+          const answer = root.querySelector(`#faq-answer-${index}`) as HTMLElement | null;
+          const isOpen = answer?.classList.contains('hidden') === false;
+
+          // Close all others
+          triggers.forEach((t) => {
+            if (t !== trigger) {
+              const idx = t.getAttribute('data-index');
+              const ans = root.querySelector(`#faq-answer-${idx}`) as HTMLElement | null;
+              if (ans && !ans.classList.contains('hidden')) {
+                ans.classList.add('hidden');
+                ans.style.maxHeight = '0';
+                t.setAttribute('aria-expanded', 'false');
+              }
+            }
+          });
+
+          // Toggle current
+          if (answer) {
+            if (isOpen) {
+              answer.classList.add('hidden');
+              answer.style.maxHeight = '0';
+              trigger.setAttribute('aria-expanded', 'false');
+            } else {
+              answer.classList.remove('hidden');
+              answer.style.maxHeight = answer.scrollHeight + 'px';
+              trigger.setAttribute('aria-expanded', 'true');
             }
           }
         });
-
-        // Toggle current
-        if (answer) {
-          if (isOpen) {
-            answer.classList.add('hidden');
-            answer.style.maxHeight = '0';
-            trigger.setAttribute('aria-expanded', 'false');
-          } else {
-            answer.classList.remove('hidden');
-            answer.style.maxHeight = answer.scrollHeight + 'px';
-            trigger.setAttribute('aria-expanded', 'true');
-          }
-        }
       });
     });
   </script>

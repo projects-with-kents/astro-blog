@@ -25,13 +25,15 @@ const {
 <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
 
   <!-- Background image -->
-  <img
-    src={image}
-    alt={imageAlt}
-    class="absolute inset-0 w-full h-full object-cover object-center"
-    loading="eager"
-    fetchpriority="high"
-  />
+  <div class="hero-image-mask absolute inset-0" aria-hidden="true">
+    <img
+      src={image}
+      alt={imageAlt}
+      class="hero-image absolute inset-0 w-full h-full object-cover object-center"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
 
   <!-- Gradient overlay — heavy on left for readability, fades right -->
   <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/15"></div>
@@ -46,14 +48,14 @@ const {
 
   <!-- Content -->
   <div
-    class="relative z-10 w-full container mx-auto px-6 lg:px-10 pb-20"
+    class="hero-content relative z-10 w-full container mx-auto px-6 lg:px-10 pb-20"
     style="padding-top: calc(var(--announcement-height, 40px) + 96px);"
   >
     <div class="max-w-2xl">
 
       <!-- Badge -->
       {badge && (
-        <div class="mb-6">
+        <div class="hero-step hero-badge mb-6">
           <span class="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs font-medium px-3 py-1.5 rounded-full tracking-wide">
             {badge}
           </span>
@@ -64,27 +66,87 @@ const {
       <RichHeading
         text={heading}
         as="h1"
-        class="font-serif text-white font-bold leading-[1.15] mb-6 text-5xl lg:text-6xl xl:text-7xl"
+        class="hero-step hero-heading font-serif text-white font-bold leading-[1.15] mb-6 text-5xl lg:text-6xl xl:text-7xl"
       />
 
       <!-- Subheading -->
-      <p class="text-white/75 text-base lg:text-lg max-w-lg mb-10 leading-relaxed">
+      <p class="hero-step hero-subheading text-white/75 text-base lg:text-lg max-w-lg mb-10 leading-relaxed">
         {subheading}
       </p>
 
       <!-- CTA button -->
-      <Button variant="hero" size="lg" href={cta.href}>
-        <!-- Paw icon -->
-        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <ellipse cx="5.5"  cy="6"   rx="1.8" ry="2.3"/>
-          <ellipse cx="9.8"  cy="3.5" rx="1.8" ry="2.3"/>
-          <ellipse cx="14.2" cy="3.5" rx="1.8" ry="2.3"/>
-          <ellipse cx="18.5" cy="6"   rx="1.8" ry="2.3"/>
-          <path d="M12 9.5c-4.2 0-7.5 2.8-7.5 6.3 0 1.5.7 2.8 1.9 3.8 1.2 1 2.9 1.6 5.1 1.6 2.2 0 3.9-.6 5.1-1.6 1.2-1 1.9-2.3 1.9-3.8 0-3.5-3.3-6.3-7.5-6.3z"/>
-        </svg>
-        {cta.label}
-      </Button>
+      <div class="hero-step hero-cta">
+        <Button variant="hero" size="lg" href={cta.href}>
+          <!-- Paw icon -->
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <ellipse cx="5.5"  cy="6"   rx="1.8" ry="2.3"/>
+            <ellipse cx="9.8"  cy="3.5" rx="1.8" ry="2.3"/>
+            <ellipse cx="14.2" cy="3.5" rx="1.8" ry="2.3"/>
+            <ellipse cx="18.5" cy="6"   rx="1.8" ry="2.3"/>
+            <path d="M12 9.5c-4.2 0-7.5 2.8-7.5 6.3 0 1.5.7 2.8 1.9 3.8 1.2 1 2.9 1.6 5.1 1.6 2.2 0 3.9-.6 5.1-1.6 1.2-1 1.9-2.3 1.9-3.8 0-3.5-3.3-6.3-7.5-6.3z"/>
+          </svg>
+          {cta.label}
+        </Button>
+      </div>
 
     </div>
   </div>
 </section>
+
+<style>
+  .hero-image-mask {
+    overflow: hidden;
+  }
+
+  .hero-image,
+  .hero-content {
+    will-change: transform, opacity;
+  }
+
+  .hero-step {
+    will-change: transform, opacity;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const hero = document.querySelector('#hero');
+  const imageMask = hero?.querySelector('.hero-image-mask');
+  const imageEl = hero?.querySelector('.hero-image');
+  const contentEl = hero?.querySelector('.hero-content');
+  const textSteps = hero?.querySelectorAll('.hero-step');
+
+  if (imageMask && imageEl && contentEl && textSteps?.length) {
+    gsap.set(imageMask, { clipPath: 'inset(100% 0% 0% 0%)' });
+    gsap.set(imageEl, { scale: 1.12, transformOrigin: 'center center' });
+    gsap.set(textSteps, { opacity: 0, y: 22 });
+
+    gsap
+      .timeline({ defaults: { ease: 'power3.out' } })
+      .to(imageMask, {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        duration: 1.1,
+        ease: 'power4.out',
+      })
+      .to(
+        imageEl,
+        {
+          scale: 1,
+          duration: 1.2,
+        },
+        '<'
+      )
+      .to(
+        textSteps,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.58,
+          stagger: 0.14,
+          ease: 'power2.out',
+        },
+        '>-0.03'
+      );
+  }
+</script>
