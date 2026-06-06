@@ -2,7 +2,7 @@
   "id": "transportation",
   "title": "Transport",
   "description": "Convenient transportation for your pet to grooming, vet visits, and more.",
-  "heroIsDark": true,
+  "heroIsDark": false,
   "sections": [
     {
       "discriminant": "hero-centered",
