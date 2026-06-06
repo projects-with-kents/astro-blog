@@ -15,6 +15,31 @@
         },
         "ctaSecondary": {}
       }
+    },
+    {
+      "discriminant": "feature",
+      "value": {
+        "layout": "image-left",
+        "image": "/assets/transport/sections/1/value/image.webp",
+        "heading": "Why Choose Our Transport Service",
+        "body": "Your pet's well-being is our top priority. Our trained team provides a calm, secure, and pet-friendly travel experience tailored to your companion's needs.",
+        "features": [
+          {
+            "text": "Veterinary appointments "
+          },
+          {
+            "text": "Grooming visits "
+          },
+          {
+            "text": "Pet-friendly events "
+          },
+          {
+            "text": "New home relocations"
+          }
+        ],
+        "ctaPrimary": {},
+        "ctaSecondary": {}
+      }
     }
   ]
 }
