@@ -3,5 +3,158 @@
   "title": "Test",
   "description": "Test",
   "heroIsDark": false,
-  "sections": []
+  "sections": [
+    {
+      "discriminant": "hero",
+      "value": {
+        "image": "/assets/wellness/sections/0/value/image.webp",
+        "imageAlt": "test",
+        "badge": "test",
+        "heading": "test",
+        "subheading": "test",
+        "cta": {
+          "label": "test",
+          "href": "/test"
+        }
+      }
+    },
+    {
+      "discriminant": "services",
+      "value": {
+        "heading": "test",
+        "subheading": "test",
+        "items": [
+          {
+            "icon": "/assets/wellness/sections/1/value/items/0/icon.png",
+            "title": "test",
+            "description": "test",
+            "href": "/test"
+          }
+        ]
+      }
+    },
+    {
+      "discriminant": "testimonials",
+      "value": {
+        "heading": "test",
+        "subheading": "test",
+        "testimonials": [
+          {
+            "image": "/assets/wellness/sections/2/value/testimonials/0/image.webp",
+            "imageAlt": "test",
+            "rating": 5,
+            "quote": "test",
+            "text": "test",
+            "author": "test"
+          }
+        ]
+      }
+    },
+    {
+      "discriminant": "cta",
+      "value": {
+        "heading": "Hostel by Hyve Basel",
+        "body": "Hostel by Hyve Basel",
+        "ctaPrimary": {
+          "label": "Hostel by Hyve Basel",
+          "href": "/Hostel by Hyve Basel"
+        },
+        "ctaSecondary": {},
+        "backgroundColor": "#FF0000"
+      }
+    },
+    {
+      "discriminant": "faq",
+      "value": {
+        "heading": "Hostel by Hyve Basel",
+        "body": "Hostel by Hyve Basel",
+        "faqs": [
+          {
+            "question": "Hostel by Hyve Basel",
+            "answer": "Hostel by Hyve Basel"
+          }
+        ],
+        "cta": {}
+      }
+    },
+    {
+      "discriminant": "media-centered",
+      "value": {
+        "kind": "image",
+        "image": "/assets/wellness/sections/5/value/image.webp"
+      }
+    },
+    {
+      "discriminant": "gallery",
+      "value": {
+        "heading": "Hostel by Hyve Basel",
+        "body": "Hostel by Hyve Basel",
+        "variant": "mosaic",
+        "items": [
+          {
+            "image": "/assets/wellness/sections/6/value/items/0/image.webp"
+          },
+          {
+            "image": "/assets/wellness/sections/6/value/items/1/image.webp"
+          }
+        ]
+      }
+    },
+    {
+      "discriminant": "stats-text",
+      "value": {
+        "heading": "Hostel by Hyve Basel",
+        "body": "Hostel by Hyve Basel",
+        "ctaPrimary": {
+          "label": "Hostel by Hyve Basel",
+          "href": "/Hostel by Hyve Basel"
+        },
+        "ctaSecondary": {},
+        "stats": [
+          {
+            "value": "500",
+            "label": "Hostel by Hyve Basel"
+          },
+          {
+            "value": "3200",
+            "label": "Hostel by Hyve Basel"
+          }
+        ]
+      }
+    },
+    {
+      "discriminant": "light-cta-photo",
+      "value": {
+        "heading": "Hostel by Hyve Basel",
+        "body": "Hostel by Hyve Basel",
+        "image": "/assets/wellness/sections/8/value/image.webp",
+        "cta": {
+          "label": "Hostel by Hyve Basel",
+          "href": "/TEST"
+        }
+      }
+    },
+    {
+      "discriminant": "polaroid-scroll",
+      "value": {
+        "heading": "Hostel by Hyve Basel",
+        "photos": [
+          {
+            "image": "/assets/wellness/sections/9/value/photos/0/image.JPG",
+            "note": "Hostel by Hyve Basel"
+          },
+          {
+            "image": "/assets/wellness/sections/9/value/photos/1/image.JPG",
+            "note": "Hostel by Hyve Basel"
+          },
+          {
+            "image": "/assets/wellness/sections/9/value/photos/2/image.webp",
+            "note": "Hostel by Hyve Basel"
+          }
+        ],
+        "body": "Hostel by Hyve Basel",
+        "cta": {}
+      }
+    }
+  ]
 }
